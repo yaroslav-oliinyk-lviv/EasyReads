@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_add_book"
+        android:icon="@drawable/ic_menu_book_add"
+        android:title="@string/menu_item__book_list__add_text"
+        app:showAsAction="ifRoom" />
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_select_large"
+            android:icon="@drawable/ic_menu_select_photo_size_large"
+            android:title="@string/menu_item__book_list__image_size_large_text"
+            app:showAsAction="never|withText" />
+
+        <item
+            android:id="@+id/menu_select_default"
+            android:icon="@drawable/ic_menu_select_photo_size_default"
+            android:title="@string/menu_item__book_list__image_size_default_text"
+            android:checked="true"
+            app:showAsAction="never|withText" />
+
+        <item
+            android:id="@+id/menu_select_small"
+            android:icon="@drawable/ic_menu_select_photo_size_small"
+            android:title="@string/menu_item__book_list__image_size_small_text"
+            app:showAsAction="never|withText" />
+    </group>
+</menu>

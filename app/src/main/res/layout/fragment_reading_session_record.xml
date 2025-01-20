@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:colorBackground">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/cover_image"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_list_item_book_cover_image"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CornerSize8Percent"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/title_and_author_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_list_item"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/cover_image">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:maxLines="3"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/book_details__tools__book_title_text" />
+
+            <View
+                android:id="@+id/split_1"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="?android:attr/colorBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/label_read_pages"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/split_1"
+                tools:text="@string/book_details__tools__book_author_text" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_read_pages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="end"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/split_1"
+                app:layout_constraintVertical_bias="1"
+                tools:text="@string/reading_session_record__tools__read_pages_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_record"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_list_item"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/title_and_author_container">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_read_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_list_item"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/reading_session_record__tools__read_time_text" />
+
+            <View
+                android:id="@+id/split_2"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                android:background="?android:attr/colorBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_read_time" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_start_pause_recording"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_button_record"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/split_2"
+                app:srcCompat="@drawable/ic_button_record_start" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_record_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_start_pause_recording"
+                tools:text="@string/reading_session_record__label__record_status_started_text" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/button_show_notes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/background_button"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="12dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintEnd_toStartOf="@+id/button_add_note"
+            app:layout_constraintTop_toBottomOf="@+id/container_record"
+            android:text="@string/reading_session_record__button__show_notes_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/button_add_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/background_button"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="12dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/button_show_notes"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toBottomOf="@+id/container_record"
+            android:text="@string/reading_session_record__button__add_note_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/button_finish_recording"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_button"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="11dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/button_add_note"
+            android:text="@string/reading_session_record__button__finish_recording_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

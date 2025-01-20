@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/background_list_item">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/cover_image"
+        android:layout_width="92dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_list_item_book_cover_image"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CornerSize8Percent"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="3"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cover_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/book_details__tools__book_title_text" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        app:layout_constraintBottom_toTopOf="@+id/progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cover_image"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintVertical_bias="0"
+        tools:text="@string/book_details__tools__book_author_text" />
+
+    <TextView
+        android:id="@+id/shelve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:lineSpacingMultiplier="1.15"
+        app:layout_constraintStart_toEndOf="@+id/cover_image"
+        app:layout_constraintBottom_toBottomOf="@+id/progress"
+        app:layout_constraintTop_toTopOf="@+id/progress"
+        android:text="@string/book_details__label__shelve_text"/>
+
+    <TextView
+        android:id="@+id/pages"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:lineSpacingMultiplier="1.15"
+        app:layout_constraintBottom_toBottomOf="@+id/progress"
+        app:layout_constraintEnd_toStartOf="@+id/progress"
+        app:layout_constraintStart_toEndOf="@+id/shelve"
+        app:layout_constraintTop_toTopOf="@+id/progress"
+        tools:text="@string/book_details__tools__book_pages_text" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        app:indicatorColor="@color/material_dynamic_primary60"
+        app:indicatorSize="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:trackColor="?android:attr/colorBackground"
+        tools:progress="50" />
+
+    <TextView
+        android:id="@+id/progress_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:textColor="@color/material_dynamic_primary60"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/progress"
+        app:layout_constraintEnd_toEndOf="@+id/progress"
+        app:layout_constraintStart_toStartOf="@+id/progress"
+        app:layout_constraintTop_toTopOf="@+id/progress"
+        tools:text="@string/book_details__tools__progress_percentage_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

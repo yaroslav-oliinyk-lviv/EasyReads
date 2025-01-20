@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/bookListFragment">
+
+    <fragment
+        android:id="@+id/bookListFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.book.list.BookListFragment"
+        android:label="BookListFragment"
+        tools:layout="@layout/fragment_book_list">
+        <action
+            android:id="@+id/show_details"
+            app:destination="@id/bookDetailsFragment" />
+        <action
+            android:id="@+id/show_add_book"
+            app:destination="@id/bookEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.book.details.BookDetailsFragment"
+        android:label="BookDetailsFragment"
+        tools:layout="@layout/fragment_book_details">
+        <argument
+            android:name="book"
+            app:argType="com.oliinyk.yaroslav.easyreads.domain.model.Book" />
+        <action
+            android:id="@+id/show_edit_book"
+            app:destination="@id/bookEditFragment" />
+        <action
+            android:id="@+id/show_add_note_dialog"
+            app:destination="@id/noteAddEditDialogFragment" />
+        <action
+            android:id="@+id/show_notes"
+            app:destination="@id/noteListFragment" />
+        <action
+            android:id="@+id/show_reading_session_record"
+            app:destination="@id/readingSessionRecordFragment" />
+        <action
+            android:id="@+id/show_reading_session_add_edit"
+            app:destination="@id/readingSessionAddEditDialogFragment" />
+        <action
+            android:id="@+id/show_reading_sessions"
+            app:destination="@id/readingSessionListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookEditFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.book.edit.BookEditFragment"
+        android:label="BookEditFragment"
+        tools:layout="@layout/fragment_book_edit">
+        <argument
+            android:name="book"
+            app:argType="com.oliinyk.yaroslav.easyreads.domain.model.Book" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/noteAddEditDialogFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.note.add_edit.NoteAddEditDialogFragment"
+        android:label="NoteAddEditDialogFragment"
+        tools:layout="@layout/dialog_fragment_note_add_edit">
+        <argument
+            android:name="note"
+            app:argType="com.oliinyk.yaroslav.easyreads.domain.model.Note" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.note.list.NoteListFragment"
+        android:label="NoteListFragment"
+        tools:layout="@layout/fragment_note_list">
+        <argument
+            android:name="bookId"
+            app:argType="java.util.UUID" />
+        <action
+            android:id="@+id/show_edit_note_dialog"
+            app:destination="@id/noteAddEditDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/readingSessionRecordFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.reading_session.record.ReadingSessionRecordFragment"
+        android:label="ReadingSessionRecordFragment"
+        tools:layout="@layout/fragment_reading_session_record">
+        <argument
+            android:name="book"
+            app:argType="com.oliinyk.yaroslav.easyreads.domain.model.Book" />
+        <action
+            android:id="@+id/show_reading_session_add_edit"
+            app:destination="@id/readingSessionAddEditDialogFragment" />
+        <action
+            android:id="@+id/show_notes"
+            app:destination="@id/noteListFragment" />
+        <action
+            android:id="@+id/show_edit_note_dialog"
+            app:destination="@id/noteAddEditDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/readingSessionAddEditDialogFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.reading_session.add_edit.ReadingSessionAddEditDialogFragment"
+        android:label="ReadingSessionEditDialogFragment"
+        tools:layout="@layout/dialog_fragment_reading_session_add_edit">
+        <argument
+            android:name="readingSession"
+            app:argType="com.oliinyk.yaroslav.easyreads.domain.model.ReadingSession" />
+    </dialog>
+    <fragment
+        android:id="@+id/readingSessionListFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.reading_session.list.ReadingSessionListFragment"
+        android:label="ReadingSessionListFragment"
+        tools:layout="@layout/fragment_reading_session_list">
+        <argument
+            android:name="book"
+            app:argType="com.oliinyk.yaroslav.easyreads.domain.model.Book" />
+        <action
+            android:id="@+id/show_reading_session_add_edit"
+            app:destination="@id/readingSessionAddEditDialogFragment" />
+    </fragment>
+
+</navigation>

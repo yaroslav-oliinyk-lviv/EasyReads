@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearanceOverlay" />
+
+    <style name="ShapeAppearanceOverlay.CornerSize8Percent" parent="ShapeAppearanceOverlay">
+        <item name="cornerSize">8%</item>
+    </style>
+
+    <style name="AppDialogTheme" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+</resources>

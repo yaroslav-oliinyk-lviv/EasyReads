@@ -1,3 +1,238 @@
 <resources>
     <string name="app_name">EasyReads</string>
+
+    <!-- Shared Usage -->
+    <string name="date_and_time_format">yyyy MMM dd HH:mm</string>
+    <string name="date_format">yyyy MMM dd</string>
+    <string name="book_reading_progress_percentage_text">%1$d%%</string>
+
+    <!-- Toolbar -->
+    <string name="note_list__toolbar__title_text">Notes (%1$d)</string>
+    <string name="book_details__toolbar__title_test">Details</string>
+    <string name="book_list__toolbar__title_text">Books (%1$d)</string>
+
+    <!-- Menu Items Text -->
+    <string name="menu_item__book_list__add_text">add</string>
+    <string name="menu_item__book_list__image_size_large_text">Size Large</string>
+    <string name="menu_item__book_list__image_size_default_text">Size Default</string>
+    <string name="menu_item__book_list__image_size_small_text">Size Small</string>
+
+    <string name="menu_item__book_details__edit_text">edit</string>
+    <string name="menu_item__book_details__remove_text">remove</string>
+
+    <string name="menu_item__book_edit__save_text">save</string>
+
+    <string name="menu_item__note_list__add_text">add</string>
+
+    <!-- Book List -->
+    <string name="book_list__button__sorted_by_text">Sorted by: %1$s</string>
+    <string name="book_list__button__sorted_by_title_text">Title</string>
+    <string name="book_list__button__sorted_by_author_text">Author</string>
+    <string name="book_list__button__sorted_by_added_date_text">Added Date</string>
+    <string name="book_list__button__sorted_by_updated_date_text">Updated Date</string>
+
+    <!-- Book Details -->
+    <string name="book_details__button__see_all_notes_text">See All Notes (%1$d)</string>
+    <string name="book_details__label__book_description_text">Description</string>
+    <string name="book_details__label__no_notes_text">No Notes</string>
+    <string name="book_details__label__note_page_text">Page: %1$d</string>
+    <string name="book_details__tools__book_description_text">For a thousand years the ash fell and no flowers bloomed. For a thousand years the Skaa slaved in misery and lived in fear. For a thousand years the Lord Ruler, the \"Sliver of Infinity,\" reigned with absolute power and ultimate terror, divinely invincible. Then, when hope was so long lost that not even its memory remained, a terribly scarred, heart-broken half-Skaa rediscovered it in the depths of the Lord Ruler\'s most hellish prison. Kelsier \"snapped\" and found in himself the powers of a Mistborn. A brilliant thief and natural leader, he turned his talents to the ultimate caper, with the Lord Ruler himself as the mark.\n\nKelsier recruited the underworld\'s elite, the smartest and most trustworthy allomancers, each of whom shares one of his many powers, and all of whom relish a high-stakes challenge. Then Kelsier reveals his ultimate dream, not just the greatest heist in history, but the downfall of the divine despot.\n\nBut even with the best criminal crew ever assembled, Kel\'s plan looks more like the ultimate long shot, until luck brings a ragged girl named Vin into his life. Like him, she\'s a half-Skaa orphan, but she\'s lived a much harsher life. Vin has learned to expect betrayal from everyone she meets. She will have to learn trust if Kel is to help her master powers of which she never dreamed.\n\nBrandon Sanderson, fantasy\'s newest master tale-spinner and author of the acclaimed debut Elantris, dares to turn a genre on its head by asking a simple question: What if the prophesied hero failed to defeat the Dark Lord? The answer will be found in the Mistborn Trilogy, a saga of surprises that begins with the book in your hands. Fantasy will never be the same again.</string>
+    <string name="book_details__tools__book_description_text_less">For a thousand years the ash fell and no flowers bloomed. For a thousand years the Skaa slaved in misery and lived in fear. For a thousand years the Lord Ruler, the \"Sliver of Infinity,\" reigned with absolute power and ultimate terror, divinely invincible. Then, when hope was so long lost that not even its memory remained, a terribly scarred, heart-broken half-Skaa rediscovered it in the depths of the Lord Ruler\'s most hellish prison. Kelsier \"snapped\" and found in himself the powers of a Mistborn. A brilliant thief and natural leader, he turned his talents to the ultimate caper, with the Lord Ruler himself as the mark.\n\nKelsier recruited the underworld\'s elite, the smartest and most trustworthy allomancers, each of whom shares one of his many powers, and all of whom relish a high-stakes challenge. Then Kelsier reveals his ultimate dream, not just the greatest heist in history, but the downfall of the divine despot.\n\nBut even with the best criminal crew ever assembled, Kel\'s plan looks more like the ultimate long shot, until luck brings a ragged girl named Vin into his life. Like him, she\'s a half-Skaa orphan, but she\'s lived a much harsher life. Vin has learned to expect betrayal from everyone she meets. She will have to learn trust if Kel is to help her master powers of which she never dreamed.</string>
+    <string name="book_details__tools__book_author_text">Brandon Sanderson</string>
+    <string name="book_details__tools__book_title_text">The Final Empire</string>
+    <string name="book_details__label__book_pages_text">PAGES\n%1$d/%2$d</string>
+    <string name="book_details__tools__book_pages_text">PAGES\n153/647</string>
+    <string name="book_details__label__book_read_time_text">READ TIME\n%1$02d:%2$02d</string>
+    <string name="book_details__tools__book_read_time_text">READ TIME\n01:35</string>
+    <string name="book_details__label__book_read_average_pages_hour_text">Av. PAGES/HOUR\n%d</string>
+    <string name="book_details__tools__book_read_average_pages_hour_text">Av. PAGES/HOUR\n18</string>
+    <string name="book_details__label__book_read_pages_hour_text">PAGES/HOUR\n%d</string>
+    <string name="book_details__tools__progress_percentage_text">100%</string>
+    <string name="book_details__tools__see_all_notes_text">See All Notes (0)</string>
+    <string name="book_details__label__shelve_text">SHELVE\n%s</string>
+    <string name="book_details__label__shelve_want_to_read_text">Want To Read</string>
+    <string name="book_details__label__shelve_reading_text">Reading</string>
+    <string name="book_details__label__shelve_finished_text">Finished</string>
+    <string name="book_details__label__no_reading_sessions_text">No Reading Sessions</string>
+    <string name="book_details__label__start_reading_session_text">Start Reading Session</string>
+    <string name="book_details__button__see_all_reading_sessions_text">See All Reading Sessions (%1$d)</string>
+
+    <string name="book_details__dialog__message_book_remove_text">Book will be removed</string>
+
+    <string name="book_details__toast__message_new_note_added_text">New note added</string>
+    <string name="book_details__toast__message_note_updated_text">Note updated</string>
+
+    <!-- Book Edit -->
+    <string name="book_edit__label__change_cover_image_text">Press\nto\nchange</string>
+    <string name="book_edit__label__book_title_text">Title:</string>
+    <string name="book_edit__label__book_author_text">Author:</string>
+    <string name="book_edit__label__book_pages_count_text">Pages Count:</string>
+    <string name="book_edit__label__book_page_current_text">Page Current:</string>
+    <string name="book_edit__label__book_description_text">Description:</string>
+    <string name="book_edit__hint__enter_book_title_text">Enter book title</string>
+    <string name="book_edit__hint__enter_book_author_text">Enter author</string>
+    <string name="book_edit__hint__book_pages_count_text">Enter pages count</string>
+    <string name="book_edit__hint__book_page_current_text">Enter current page</string>
+    <string name="book_edit__hint__enter_book_description_text">Enter description</string>
+
+    <string-array name="book_edit__shelves__list_items">
+        <item>Want To Read</item>
+        <item>Reading</item>
+        <item>Finished</item>
+    </string-array>
+
+    <!-- Note List -->
+    <string name="note_list__label__no_notes_text">No Notes</string>
+    <string name="note_list__dialog__confirmation_note_remove_message_text">Note will be removed</string>
+    <!-- Note List Item -->
+    <string name="note_list_item__label__page_text">"Page: %1$d"</string>
+    <string name="note_list_item__tools__note_text">Note Text</string>
+    <string name="note_list_item__tools__added_date_text">13.10.2024 10:30</string>
+
+    <!-- Note Add Edit Dialog -->
+    <string name="note_add_edit_dialog__hint__enter_note_text">Enter note text</string>
+    <string name="note_add_edit_dialog__hint__enter_note_page_text">Enter page</string>
+    <string name="note_add_edit_dialog__button__save_text">Save</string>
+    <string name="note_add_edit_dialog__button__cancel_text">Cancel</string>
+
+    <!-- Confirmation Dialog -->
+    <string name="confirmation_dialog__button__ok_text">Ok</string>
+    <string name="confirmation_dialog__button__cancel_text">Cancel</string>
+
+    <!-- Messages -->
+    <string name="msg_info__image_saved">Image saved</string>
+    <string name="msg_warn__not_able_to_open_image_picker">Was not able to launch image picker view!</string>
+    <string name="msg_warn__not_able_to_copy_image">Was not able to save new cove image</string>
+    <string name="msg_warn__not_able_to_launch_camera">Was not able to launch Camera!</string>
+    <string name="msg_error__cannot_access_binding">Cannot access binding because it is null.</string>
+
+    <!-- Reading Session Record -->
+    <string name="reading_session_record__tools__read_time_text">01:13:57</string>
+    <string name="reading_session_record__label__read_time_text">%1$02d:%2$02d:%3$02d</string>
+    <string name="reading_session_record__label__record_status_started_text">Reading...</string>
+    <string name="reading_session_record__label__record_status_paused_text">Paused</string>
+    <string name="reading_session_record__button__finish_recording_text">Finish</string>
+    <string name="reading_session_record__button__show_notes_text">See Notes</string>
+    <string name="reading_session_record__button__add_note_text">Add Note</string>
+    <string name="reading_session_record__tools__read_pages_text">Pages: 153/647</string>
+    <string name="reading_session_record__label__read_pages_text">Pages: %1$d/%2$d</string>
+    <string name="reading_session_record__toolbar__title_text">Reading Session</string>
+
+    <!-- Reading Session Add Edit Dialog -->
+    <string name="reading_session_add_edit_dialog__hint__enter_end_page_text">Enter end page</string>
+    <string name="reading_session_add_edit_dialog__button__save_text">Save</string>
+    <string name="reading_session_add_edit_dialog__button__cancel_text">Cancel</string>
+    <string name="reading_session_add_edit_dialog__tools__start_page_text">0</string>
+    <string name="reading_session_add_edit_dialog__label__read_hour_text">hours</string>
+    <string name="reading_session_add_edit_dialog__label__read_minutes_text">minutes</string>
+    <string name="reading_session_add_edit_dialog__label__read_seconds_text">seconds</string>
+    <string name="reading_session_add_edit_dialog__error__message_text">End page must be greate then start page</string>
+
+    <string-array name="reading_session_add_edit_dialog__spinner__hour">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+
+    <string-array name="reading_session_add_edit_dialog__spinner__minutes_or_seconds">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+
+    <!-- Reading Session List -->
+    <string name="reading_session_list__label__list_empty_text">No Reading Sessions</string>
+    <string name="reading_session_list__dialog__confirmation_remove_message_text">Reading Session will be removed</string>
+    <!-- Reading Session List Item -->
+    <string name="reading_session_list_item__label__date_text">DATE\n%s</string>
+    <string name="reading_session_list_item__label__read_time_text">READ TIME\n%1$02d:%2$02d</string>
+    <string name="reading_session_list_item__label__read_start_page_text">START PAGE\n%d</string>
+    <string name="reading_session_list_item__label__read_end_page_text">END PAGE\n%d</string>
+    <string name="reading_session_list_item__label__read_pages_hour_text">PAGES/HOUR\n%d</string>
+    <string name="reading_session_list_item__label__read_pages_text">READ PAGES\n%d</string>
+    <string name="reading_session_list__toolbar__title_text">Reading Sessions (%d)</string>
+
+    <!-- Read Time Counter Notification -->
+    <string name="read_time_counter_notification_channel_name">Read Time Counter</string>
+    <string name="read_time_counter_notification_content_title_text">Reading...</string>
+    <string name="read_time_counter_notification_content_text">Reading time: %1$02d:%2$02d</string>
+
 </resources>

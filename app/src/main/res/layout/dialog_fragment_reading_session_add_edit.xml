@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_list_item"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_start_page"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/background_edit_text"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        tools:text="@string/reading_session_add_edit_dialog__tools__start_page_text" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_end_page"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/background_edit_text"
+        android:inputType="number"
+        android:maxLength="4"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_start_page"
+        app:layout_constraintVertical_bias="0"
+        android:hint="@string/reading_session_add_edit_dialog__hint__enter_end_page_text" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_read_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_read_hour"
+        app:layout_constraintStart_toStartOf="@+id/spinner_read_hour"
+        app:layout_constraintTop_toBottomOf="@+id/edit_end_page"
+        android:text="@string/reading_session_add_edit_dialog__label__read_hour_text"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_read_hour"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@drawable/background_edit_text"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spinner_read_minutes"
+        app:layout_constraintTop_toBottomOf="@+id/label_read_hour"
+        android:entries="@array/reading_session_add_edit_dialog__spinner__hour"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_read_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_read_minutes"
+        app:layout_constraintStart_toStartOf="@+id/spinner_read_minutes"
+        app:layout_constraintTop_toBottomOf="@+id/edit_end_page"
+        android:text="@string/reading_session_add_edit_dialog__label__read_minutes_text"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_read_minutes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@drawable/background_edit_text"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toStartOf="@+id/spinner_read_seconds"
+        app:layout_constraintStart_toEndOf="@+id/spinner_read_hour"
+        app:layout_constraintTop_toBottomOf="@+id/label_read_minutes"
+        android:entries="@array/reading_session_add_edit_dialog__spinner__minutes_or_seconds"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_read_seconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_read_seconds"
+        app:layout_constraintStart_toStartOf="@+id/spinner_read_seconds"
+        app:layout_constraintTop_toBottomOf="@+id/edit_end_page"
+        android:text="@string/reading_session_add_edit_dialog__label__read_seconds_text"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_read_seconds"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@drawable/background_edit_text"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner_read_minutes"
+        app:layout_constraintTop_toBottomOf="@+id/label_read_minutes"
+        android:entries="@array/reading_session_add_edit_dialog__spinner__minutes_or_seconds"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/button_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/background_button"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_read_hour"
+        app:layout_constraintVertical_bias="0"
+        android:text="@string/reading_session_add_edit_dialog__button__save_text" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/button_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/background_button"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_save"
+        app:layout_constraintVertical_bias="0"
+        android:text="@string/reading_session_add_edit_dialog__button__cancel_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

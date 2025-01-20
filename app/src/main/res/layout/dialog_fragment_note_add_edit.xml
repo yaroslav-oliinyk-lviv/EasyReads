@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_list_item"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/note_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_edit_text"
+        android:gravity="top"
+        android:hint="@string/note_add_edit_dialog__hint__enter_note_text"
+        android:minLines="5"
+        android:maxLines="5"
+        android:inputType="textMultiLine"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/note_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/background_edit_text"
+        android:inputType="number"
+        android:maxLength="4"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_text"
+        app:layout_constraintVertical_bias="0"
+        android:hint="@string/note_add_edit_dialog__hint__enter_note_page_text" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/note_button_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/background_button"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_page"
+        app:layout_constraintVertical_bias="0"
+        android:text="@string/note_add_edit_dialog__button__save_text" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/note_button_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/background_button"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_button_save"
+        app:layout_constraintVertical_bias="0"
+        android:text="@string/note_add_edit_dialog__button__cancel_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

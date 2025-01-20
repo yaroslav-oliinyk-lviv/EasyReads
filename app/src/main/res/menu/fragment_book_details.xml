@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_edit_book"
+        android:title="@string/menu_item__book_details__edit_text"
+        android:icon="@drawable/ic_menu_book_edit"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/menu_remove_book"
+        android:title="@string/menu_item__book_details__remove_text"
+        android:icon="@drawable/ic_menu_book_remove"
+        app:showAsAction="never|withText"/>
+</menu>
