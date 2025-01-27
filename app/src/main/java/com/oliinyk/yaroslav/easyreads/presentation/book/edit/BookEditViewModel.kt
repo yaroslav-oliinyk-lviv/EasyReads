@@ -3,7 +3,6 @@ package com.oliinyk.yaroslav.easyreads.presentation.book.edit
 import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
 import com.oliinyk.yaroslav.easyreads.domain.repository.BookRepository
 import com.oliinyk.yaroslav.easyreads.domain.util.deleteBookCoverImage
@@ -15,7 +14,7 @@ import kotlinx.coroutines.flow.update
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.Date
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -53,7 +52,7 @@ class BookEditViewModel @Inject constructor(
         _stateUi.update {
             it.copy(
                 pickedImageUri = uri,
-                pickedImageName = "IMG_${Date()}.JPG"
+                pickedImageName = "IMG_${_stateUi.value.book?.id ?: UUID.randomUUID()}.JPG"
             )
         }
         copyImageToAppFolder(applicationContext)

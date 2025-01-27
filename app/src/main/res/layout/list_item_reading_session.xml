@@ -23,13 +23,13 @@
             android:layout_marginStart="8dp"
             android:lineSpacingMultiplier="1.15"
             android:maxLines="2"
-            android:paddingHorizontal="8dp"
             android:paddingTop="8dp"
             android:paddingBottom="4dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_read_time"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/reading_session_list_item__label__date_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -43,9 +43,10 @@
             android:paddingTop="8dp"
             android:paddingBottom="4dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/label_read_end_page"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_read_time"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/reading_session_list_item__label__read_start_page_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -56,13 +57,14 @@
             android:gravity="end"
             android:lineSpacingMultiplier="1.15"
             android:maxLines="2"
-            android:paddingHorizontal="8dp"
+            android:paddingStart="8dp"
             android:paddingTop="8dp"
             android:paddingBottom="4dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_read_time"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/reading_session_list_item__label__read_end_page_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -71,14 +73,12 @@
             android:layout_height="wrap_content"
             android:lineSpacingMultiplier="1.15"
             android:maxLines="2"
-            android:paddingHorizontal="8dp"
             android:paddingTop="8dp"
             android:paddingBottom="4dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/label_read_date"
-            app:layout_constraintTop_toBottomOf="@+id/label_read_date"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="@string/reading_session_list_item__label__read_time_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -93,10 +93,9 @@
             android:paddingBottom="4dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/label_read_time"
             app:layout_constraintEnd_toStartOf="@id/label_read_pages"
-            app:layout_constraintTop_toBottomOf="@+id/label_read_date"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="@string/reading_session_list_item__label__read_pages_hour_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -107,14 +106,12 @@
             android:gravity="end"
             android:lineSpacingMultiplier="1.15"
             android:maxLines="2"
-            android:paddingHorizontal="8dp"
             android:paddingTop="8dp"
             android:paddingBottom="4dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_read_date"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="@string/reading_session_list_item__label__read_pages_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

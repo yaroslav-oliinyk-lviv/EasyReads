@@ -2,8 +2,8 @@
     <string name="app_name">EasyReads</string>
 
     <!-- Shared Usage -->
-    <string name="date_and_time_format">yyyy MMM dd HH:mm</string>
-    <string name="date_format">yyyy MMM dd</string>
+    <string name="date_and_time_format">dd MMM yyyy HH:mm</string>
+    <string name="date_format">dd MMM yyyy</string>
     <string name="book_reading_progress_percentage_text">%1$d%%</string>
 
     <!-- Toolbar -->
