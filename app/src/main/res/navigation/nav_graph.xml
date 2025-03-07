@@ -13,6 +13,19 @@
         <action
             android:id="@+id/show_all_books"
             app:destination="@id/bookListFragment" />
+        <action
+            android:id="@+id/show_reading_goal"
+            app:destination="@id/readingGoalFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/readingGoalFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.reading_goal.ReadingGoalFragment"
+        android:label="ReadingGoalFragment"
+        tools:layout="@layout/fragment_reading_goal">
+        <action
+            android:id="@+id/show_details"
+            app:destination="@id/bookDetailsFragment" />
     </fragment>
 
     <fragment

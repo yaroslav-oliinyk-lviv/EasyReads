@@ -1,4 +1,4 @@
-package com.oliinyk.yaroslav.easyreads.presentation.book.list
+package com.oliinyk.yaroslav.easyreads.presentation.reading_goal
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,22 +6,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.oliinyk.yaroslav.easyreads.R
-import com.oliinyk.yaroslav.easyreads.databinding.ListItemBookBinding
+import com.oliinyk.yaroslav.easyreads.databinding.ListItemReadingGoalBookBinding
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
 import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType
 import com.oliinyk.yaroslav.easyreads.domain.util.DiffUtilCallbackHelper
 import com.oliinyk.yaroslav.easyreads.domain.util.updateBookCoverImage
 
-class BookHolder(
-    private val binding: ListItemBookBinding,
+class ReadingGoalBookHolder(
+    private val binding: ListItemReadingGoalBookBinding,
     private val context: Context,
     val onClickedBook: (Book) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(book: Book, holderSize: HolderSize) {
+    fun bind(book: Book, holderSize: ReadingGoalHolderSize) {
         binding.apply {
 
-            if (holderSize == HolderSize.SMALL) {
+            if (holderSize == ReadingGoalHolderSize.SMALL) {
                 val scale = context.resources.displayMetrics.density
                 val widthInDp = 74 * scale
                 val heightInDp = 111 * scale
@@ -33,7 +33,7 @@ class BookHolder(
                 title.textSize = 13.toFloat()
                 title.maxLines = 2
 
-            } else if (holderSize == HolderSize.LARGE) {
+            } else if (holderSize == ReadingGoalHolderSize.LARGE) {
                 val scale = context.resources.displayMetrics.density
                 val widthInDp = 120 * scale
                 val heightInDp = 180 * scale
@@ -87,28 +87,28 @@ class BookHolder(
         }
     }
 
-    enum class HolderSize {
+    enum class ReadingGoalHolderSize {
         SMALL, DEFAULT, LARGE
     }
 }
 
-data class BookListAdapter(
+data class ReadingGoalBookListAdapter(
     private var books: List<Book> = emptyList(),
-    val holderSize: BookHolder.HolderSize,
+    val holderSize: ReadingGoalBookHolder.ReadingGoalHolderSize,
     private val onClickedBook: (Book) -> Unit
-) : RecyclerView.Adapter<BookHolder>() {
+) : RecyclerView.Adapter<ReadingGoalBookHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookHolder {
-        val binding = ListItemBookBinding
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReadingGoalBookHolder {
+        val binding = ListItemReadingGoalBookBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-        return BookHolder(binding, parent.context, onClickedBook)
+        return ReadingGoalBookHolder(binding, parent.context, onClickedBook)
     }
 
     override fun getItemCount(): Int {
         return books.size
     }
 
-    override fun onBindViewHolder(holder: BookHolder, position: Int) {
+    override fun onBindViewHolder(holder: ReadingGoalBookHolder, position: Int) {
         holder.bind(books[position], holderSize)
     }
 

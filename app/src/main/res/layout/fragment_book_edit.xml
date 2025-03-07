@@ -116,14 +116,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/background_edit_text"
-                android:inputType="textCapWords"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/barrier_1"
                 app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/background_edit_text"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
                 android:hint="@string/book_edit__hint__enter_book_title_text" />
 
             <View
@@ -152,14 +153,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/background_edit_text"
-                android:inputType="textCapWords"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/barrier_1"
                 app:layout_constraintTop_toBottomOf="@+id/title"
+                android:background="@drawable/background_edit_text"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
                 android:hint="@string/book_edit__hint__enter_book_author_text" />
 
             <View
@@ -188,15 +190,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/background_edit_text"
-                android:inputType="number"
-                android:maxLength="4"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/barrier_2"
                 app:layout_constraintTop_toBottomOf="@+id/author"
+                android:background="@drawable/background_edit_text"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:inputType="number"
+                android:maxLength="4"
                 android:hint="@string/book_edit__hint__book_pages_count_text" />
 
             <View
@@ -264,17 +266,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/background_edit_text"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:minLines="10"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/description_label"
+                android:background="@drawable/background_edit_text"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minLines="10"
                 android:hint="@string/book_edit__hint__enter_book_description_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

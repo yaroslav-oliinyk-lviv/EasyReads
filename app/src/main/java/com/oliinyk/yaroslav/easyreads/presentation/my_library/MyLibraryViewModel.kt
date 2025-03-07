@@ -12,9 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.Calendar
 import java.util.Date
-import java.util.GregorianCalendar
 import javax.inject.Inject
 
 @HiltViewModel
@@ -52,5 +50,6 @@ data class MyLibraryUiState(
     val readingCount: Int = 0,
     val wantToReadCount: Int = 0,
     val allCount: Int = 0,
-    val currentYearFinishedBooksCount: Int = 0
+    val currentYearFinishedBooksCount: Int = 0,
+    val readingGoal: Int = 12 //TODO:  year goals read from DB
 )

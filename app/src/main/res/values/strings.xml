@@ -237,8 +237,6 @@
     <string name="read_time_counter_notification_content_text">Reading time: %1$02d:%2$02d</string>
 
     <!-- My Library -->
-    <string name="my_library__label__goals_title_text">%s Goals</string>
-    <string name="my_library__label__goals_reading_progress_text">You have read %d of 24 books</string>
     <string name="my_library__label__shelves_title_text">Shelves</string>
     <string name="my_library__label__shelve_finished_text">Finished (%d)</string>
     <string name="my_library__label__shelve_reading_text">Reading (%d)</string>
@@ -246,5 +244,15 @@
     <string name="my_library__label__shelve_see_all_books">See All Books (%d)</string>
 
     <string name="my_library__toolbar__title_text">@string/app_name</string>
+
+    <!-- Reading Goal -->
+    <string name="reading_goal__label__goal_title_text">%s Reading Goals</string>
+    <string name="reading_goal__label__goal_reading_progress_text">You have read %d of %d books</string>
+    <string name="reading_goal__label__goal_change_text">Change Your Goal</string>
+    <string name="reading_goal__label__summery_title_text">Reading Summery</string>
+    <string name="reading_goal__label__summery_read_pages_text">Read Pages: %d</string>
+    <string name="reading_goal__label__summery_books_title_text">Books (%d)</string>
+
+    <string name="reading_goal__toolbar__title_text">@string/reading_goal__label__goal_title_text</string>
 
 </resources>

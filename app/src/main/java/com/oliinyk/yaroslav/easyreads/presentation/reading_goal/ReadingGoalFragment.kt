@@ -1,4 +1,4 @@
-package com.oliinyk.yaroslav.easyreads.presentation.my_library
+package com.oliinyk.yaroslav.easyreads.presentation.reading_goal
 
 import android.os.Bundle
 import android.text.format.DateFormat
@@ -11,30 +11,37 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.oliinyk.yaroslav.easyreads.R
-import com.oliinyk.yaroslav.easyreads.databinding.FragmentMyLibraryBinding
+import com.oliinyk.yaroslav.easyreads.databinding.FragmentReadingGoalBinding
+import com.oliinyk.yaroslav.easyreads.presentation.book.list.BookListAdapter
+import com.oliinyk.yaroslav.easyreads.presentation.book.list.BookListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Date
 
 @AndroidEntryPoint
-class MyLibraryFragment : Fragment() {
+class ReadingGoalFragment : Fragment() {
 
-    private var _binding: FragmentMyLibraryBinding? = null
+    private var _binding: FragmentReadingGoalBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
             getString(R.string.msg_error__cannot_access_binding)
         }
 
-    private val viewModel: MyLibraryViewModel by viewModels()
+    private val viewModel: ReadingGoalViewModel by viewModels()
+
+    private lateinit var currentYear: String
+    private lateinit var _adapter: ReadingGoalBookListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val inflater = TransitionInflater.from(requireContext())
-        exitTransition = inflater.inflateTransition(R.transition.fade)
-        reenterTransition = inflater.inflateTransition(R.transition.fade)
+        enterTransition = inflater.inflateTransition(R.transition.slide_in_from_bottom)
+
+        currentYear = DateFormat.format(getString(R.string.date_year_format), Date()).toString()
     }
 
     override fun onCreateView(
@@ -42,14 +49,28 @@ class MyLibraryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMyLibraryBinding
+        _binding = FragmentReadingGoalBinding
             .inflate(inflater, container, false)
+            .apply {
+                listSummeryBooks.layoutManager = LinearLayoutManager(context)
+                _adapter = ReadingGoalBookListAdapter(
+                    holderSize = ReadingGoalBookHolder.ReadingGoalHolderSize.DEFAULT
+                ) { book ->
+                    findNavController().navigate(
+                        ReadingGoalFragmentDirections.showDetails(book)
+                    )
+                }
+                listSummeryBooks.adapter = _adapter
+            }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = getString(R.string.my_library__toolbar__title_text)
+        requireActivity().title = getString(
+            R.string.reading_goal__toolbar__title_text,
+            currentYear
+        )
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -62,7 +83,7 @@ class MyLibraryFragment : Fragment() {
         setOnClickListeners()
     }
 
-    private fun updateUi(stateUi: MyLibraryUiState) {
+    private fun updateUi(stateUi: ReadingGoalUiState) {
         binding.apply {
             labelGoalsTitle.text = getString(
                 R.string.reading_goal__label__goal_title_text,
@@ -73,50 +94,34 @@ class MyLibraryFragment : Fragment() {
             )
             labelGoalsReadingProgress.text = getString(
                 R.string.reading_goal__label__goal_reading_progress_text,
-                stateUi.currentYearFinishedBooksCount,
+                stateUi.readBooksCount,
                 stateUi.readingGoal
             )
-
             progress.progress = if (stateUi.readingGoal > 0) {
-                stateUi.currentYearFinishedBooksCount * 100 / stateUi.readingGoal
+                stateUi.readBooksCount * 100 / stateUi.readingGoal
             } else {
                 0
             }
 
-            shelveFinished.text = getString(
-                R.string.my_library__label__shelve_finished_text,
-                stateUi.finishedCount
+            //Summery
+            labelSummeryReadPages.text = getString(
+                R.string.reading_goal__label__summery_read_pages_text,
+                stateUi.readPages
             )
-            shelveReading.text = getString(
-                R.string.my_library__label__shelve_reading_text,
-                stateUi.readingCount
+
+            //Books
+            labelSummeryBooksTitle.text = getString(
+                R.string.reading_goal__label__summery_books_title_text,
+                stateUi.readBooksCount
             )
-            shelveWantToRead.text = getString(
-                R.string.my_library__label__shelve_want_to_read_text,
-                stateUi.wantToReadCount
-            )
-            shelveSeeAllBooks.text = getString(
-                R.string.my_library__label__shelve_see_all_books,
-                stateUi.allCount
-            )
+            _adapter.updateData(stateUi.books)
         }
     }
 
     private fun setOnClickListeners() {
         binding.apply {
             //Goals
-            containerReadingGoal.setOnClickListener {
-                findNavController().navigate(
-                    MyLibraryFragmentDirections.showReadingGoal()
-                )
-            }
-
-            //Shelves
-            shelveSeeAllBooks.setOnClickListener {
-                findNavController().navigate(
-                    MyLibraryFragmentDirections.showAllBooks()
-                )
-            }
+            //TODO: Change Your Goal
         }
     }
 }

@@ -12,7 +12,7 @@
         android:background="?android:colorBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_goals"
+            android:id="@+id/container_reading_goal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -26,14 +26,15 @@
                 android:id="@+id/label_goals_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+                android:paddingBottom="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textSize="20sp"
-                android:text="@string/my_library__label__goals_title_text"/>
+                android:text="@string/reading_goal__label__goal_title_text"/>
 
             <View
                 android:layout_width="0dp"
@@ -55,7 +56,7 @@
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textSize="16sp"
-                android:text="@string/my_library__label__goals_reading_progress_text" />
+                android:text="@string/reading_goal__label__goal_reading_progress_text" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress"
@@ -82,14 +83,15 @@
         android:paddingHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_goals"
+        app:layout_constraintTop_toBottomOf="@+id/container_reading_goal"
         android:background="@drawable/background_list_item">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/label_shelves_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
