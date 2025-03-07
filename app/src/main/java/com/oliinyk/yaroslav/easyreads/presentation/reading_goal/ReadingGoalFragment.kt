@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.oliinyk.yaroslav.easyreads.R
@@ -33,7 +34,7 @@ class ReadingGoalFragment : Fragment() {
     private val viewModel: ReadingGoalViewModel by viewModels()
 
     private lateinit var currentYear: String
-    private lateinit var _adapter: ReadingGoalBookListAdapter
+    private lateinit var _adapter: ReadingGoalBookGridAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +53,10 @@ class ReadingGoalFragment : Fragment() {
         _binding = FragmentReadingGoalBinding
             .inflate(inflater, container, false)
             .apply {
-                listSummeryBooks.layoutManager = LinearLayoutManager(context)
-                _adapter = ReadingGoalBookListAdapter(
-                    holderSize = ReadingGoalBookHolder.ReadingGoalHolderSize.DEFAULT
+                val spanCount = 3
+                listSummeryBooks.layoutManager = GridLayoutManager(context, spanCount)
+                _adapter = ReadingGoalBookGridAdapter(
+                    holderSize = ReadingGoalGridBookHolder.ReadingGoalGridHolderSize.DEFAULT
                 ) { book ->
                     findNavController().navigate(
                         ReadingGoalFragmentDirections.showDetails(book)
