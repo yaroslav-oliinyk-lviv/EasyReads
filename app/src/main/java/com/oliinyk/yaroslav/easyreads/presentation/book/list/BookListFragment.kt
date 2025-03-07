@@ -46,11 +46,7 @@ class BookListFragment : Fragment() {
         _menuProvider = createMenuProvider()
 
         val inflater = TransitionInflater.from(requireContext())
-        exitTransition = inflater.inflateTransition(R.transition.fade)
-        reenterTransition = inflater.inflateTransition(R.transition.fade)
-
-//        enterTransition = inflater.inflateTransition(R.transition.fade)
-//        returnTransition = inflater.inflateTransition(R.transition.fade)
+        enterTransition = inflater.inflateTransition(R.transition.slide_in_from_bottom)
     }
 
     override fun onCreateView(

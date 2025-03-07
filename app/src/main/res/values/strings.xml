@@ -4,6 +4,7 @@
     <!-- Shared Usage -->
     <string name="date_and_time_format">dd MMM yyyy HH:mm</string>
     <string name="date_format">dd MMM yyyy</string>
+    <string name="date_year_format">yyyy</string>
     <string name="book_reading_progress_percentage_text">%1$d%%</string>
 
     <!-- Toolbar -->
@@ -234,5 +235,16 @@
     <string name="read_time_counter_notification_channel_name">Read Time Counter</string>
     <string name="read_time_counter_notification_content_title_text">Reading...</string>
     <string name="read_time_counter_notification_content_text">Reading time: %1$02d:%2$02d</string>
+
+    <!-- My Library -->
+    <string name="my_library__label__goals_title_text">%s Goals</string>
+    <string name="my_library__label__goals_reading_progress_text">You have read %d of 24 books</string>
+    <string name="my_library__label__shelves_title_text">Shelves</string>
+    <string name="my_library__label__shelve_finished_text">Finished (%d)</string>
+    <string name="my_library__label__shelve_reading_text">Reading (%d)</string>
+    <string name="my_library__label__shelve_want_to_read_text">Want To Read (%d)</string>
+    <string name="my_library__label__shelve_see_all_books">See All Books (%d)</string>
+
+    <string name="my_library__toolbar__title_text">@string/app_name</string>
 
 </resources>

@@ -3,7 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/bookListFragment">
+    app:startDestination="@id/myLibraryFragment">
+
+    <fragment
+        android:id="@+id/myLibraryFragment"
+        android:name="com.oliinyk.yaroslav.easyreads.presentation.my_library.MyLibraryFragment"
+        android:label="MyLibraryFragment"
+        tools:layout="@layout/fragment_my_library" >
+        <action
+            android:id="@+id/show_all_books"
+            app:destination="@id/bookListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/bookListFragment"

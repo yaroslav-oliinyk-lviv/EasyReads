@@ -13,6 +13,7 @@ import com.oliinyk.yaroslav.easyreads.data.local.migration_4_5
 import com.oliinyk.yaroslav.easyreads.data.local.migration_5_6
 import com.oliinyk.yaroslav.easyreads.data.local.migration_6_7
 import com.oliinyk.yaroslav.easyreads.data.local.migration_7_8
+import com.oliinyk.yaroslav.easyreads.data.local.migration_8_9
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -55,7 +56,8 @@ object DatabaseModule {
                 migration_4_5,
                 migration_5_6,
                 migration_6_7,
-                migration_7_8
+                migration_7_8,
+                migration_8_9
             )
             .build()
     }

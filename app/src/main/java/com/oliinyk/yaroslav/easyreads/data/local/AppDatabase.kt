@@ -21,7 +21,7 @@ import com.oliinyk.yaroslav.easyreads.data.local.entety.ReadingSessionEntity
         NoteEntity::class,
         ReadingSessionEntity::class
     ],
-    version = 8
+    version = 9
 )
 @TypeConverters(DateTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -87,5 +87,12 @@ val migration_7_8 = object : Migration(7, 8) {
         db.execSQL(
             "ALTER TABLE `books` ADD COLUMN `updated_date` INTEGER NOT NULL DEFAULT 0"
         )
+    }
+}
+
+val migration_8_9 = object : Migration(8, 9) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE `books` ADD COLUMN `finished_date` INTEGER")
+        db.execSQL("ALTER TABLE `books` ADD COLUMN `is_finished` TEXT NOT NULL DEFAULT FALSE")
     }
 }

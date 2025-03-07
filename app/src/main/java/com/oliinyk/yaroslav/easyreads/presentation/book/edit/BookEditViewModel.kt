@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
+import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType
 import com.oliinyk.yaroslav.easyreads.domain.repository.BookRepository
 import com.oliinyk.yaroslav.easyreads.domain.util.deleteBookCoverImage
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.update
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.util.Date
 import java.util.UUID
 import javax.inject.Inject
 
@@ -33,15 +35,20 @@ class BookEditViewModel @Inject constructor(
 
     fun save(contextApplication: Context) {
         _stateUi.value.book?.let {
-            var book = it
+            var saveBook = it
             if (_stateUi.value.isNewImageCopied) {
-                deleteBookCoverImage(contextApplication, book.coverImageFileName)
-                book = book.copy(coverImageFileName = _stateUi.value.pickedImageName)
+                deleteBookCoverImage(contextApplication, saveBook.coverImageFileName)
+                saveBook = saveBook.copy(coverImageFileName = _stateUi.value.pickedImageName)
             } else {
                 deleteBookCoverImage(contextApplication, _stateUi.value.pickedImageName)
             }
+            saveBook = if (saveBook.shelve == BookShelveType.FINISHED) {
+                saveBook.copy(isFinished = true, finishedDate = Date())
+            } else {
+                saveBook.copy(isFinished = false, finishedDate = null)
+            }
 
-            bookRepository.save(book)
+            bookRepository.save(saveBook)
         }
     }
 

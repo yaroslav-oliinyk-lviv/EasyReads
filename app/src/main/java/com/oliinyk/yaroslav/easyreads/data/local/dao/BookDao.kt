@@ -18,6 +18,9 @@ interface BookDao {
     @RawQuery(observedEntities = [BookEntity::class])
     fun getAllSortedBy(query: SupportSQLiteQuery): Flow<List<BookEntity>>
 
+    @Query("SELECT * FROM books")
+    fun getAll(): Flow<List<BookEntity>>
+
     @Query("SELECT * FROM books WHERE id = (:id)")
     fun getById(id: UUID): Flow<BookEntity?>
 

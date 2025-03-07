@@ -21,6 +21,9 @@ data class Book(
     val addedDate: Date = Date(),
     val updatedDate: Date = Date(),
 
+    val finishedDate: Date? = null,
+    val isFinished: Boolean = false,
+
     val coverImageFileName: String? = null
 ) : BaseModel(), Parcelable
 
@@ -34,5 +37,7 @@ fun Book.toEntity(): BookEntity = BookEntity(
     pageCurrent = pageCurrent,
     addedDate = addedDate,
     updatedDate = updatedDate,
+    finishedDate = finishedDate,
+    isFinished = isFinished.toString(),
     coverImageFileName = coverImageFileName
 )

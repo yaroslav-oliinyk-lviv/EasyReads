@@ -51,6 +51,10 @@ class BookRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun getAll(): Flow<List<Book>> {
+        return bookDao.getAll().map { entities -> entities.map { it.toModel() } }
+    }
+
     override fun getById(id: UUID): Flow<Book?> {
         return bookDao.getById(id).map { entity -> entity?.toModel() }
             .distinctUntilChanged()

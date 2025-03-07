@@ -30,6 +30,11 @@ data class BookEntity(
     @ColumnInfo("updated_date")
     val updatedDate: Date,
 
+    @ColumnInfo("finished_date")
+    val finishedDate: Date? = null,
+    @ColumnInfo(name = "is_finished", defaultValue = "FALSE")
+    val isFinished: String,
+
     @ColumnInfo("cover_image_file_name")
     val coverImageFileName: String? = null
 )
@@ -44,5 +49,7 @@ fun BookEntity.toModel(): Book = Book (
     pageCurrent = pageCurrent,
     addedDate = addedDate,
     updatedDate = updatedDate,
+    finishedDate = finishedDate,
+    isFinished = isFinished.toBoolean(),
     coverImageFileName = coverImageFileName
 )
