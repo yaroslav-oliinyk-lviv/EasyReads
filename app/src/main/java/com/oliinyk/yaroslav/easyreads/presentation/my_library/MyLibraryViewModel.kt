@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
 import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType.*
+import com.oliinyk.yaroslav.easyreads.domain.model.ReadingGoal
 import com.oliinyk.yaroslav.easyreads.domain.repository.BookRepository
+import com.oliinyk.yaroslav.easyreads.domain.repository.ReadingGoalRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyLibraryViewModel @Inject constructor(
-    private val bookRepository: BookRepository
+    private val bookRepository: BookRepository,
+    private val readingGoalRepository: ReadingGoalRepository
 ) : ViewModel() {
 
     private val _stateUi: MutableStateFlow<MyLibraryUiState> =
@@ -26,6 +29,16 @@ class MyLibraryViewModel @Inject constructor(
         get() = _stateUi.asStateFlow()
 
     init {
+        viewModelScope.launch {
+            val currentYear: Int = Date().year + 1900
+            readingGoalRepository.getByYear(currentYear).collectLatest { readingGoal ->
+                if (readingGoal != null) {
+                    _stateUi.update { it.copy(readingGoals = readingGoal.goal) }
+                } else {
+                    readingGoalRepository.insert(ReadingGoal(year = currentYear))
+                }
+            }
+        }
         viewModelScope.launch {
             bookRepository.getAll().collectLatest { books ->
                 val currentYearFinishedBooks: List<Book> = books.filter {
@@ -51,5 +64,5 @@ data class MyLibraryUiState(
     val wantToReadCount: Int = 0,
     val allCount: Int = 0,
     val currentYearFinishedBooksCount: Int = 0,
-    val readingGoal: Int = 12 //TODO:  year goals read from DB
+    val readingGoals: Int = 0
 )

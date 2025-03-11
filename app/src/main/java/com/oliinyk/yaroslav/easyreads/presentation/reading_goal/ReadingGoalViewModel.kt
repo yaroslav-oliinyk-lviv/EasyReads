@@ -3,7 +3,9 @@ package com.oliinyk.yaroslav.easyreads.presentation.reading_goal
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
+import com.oliinyk.yaroslav.easyreads.domain.model.ReadingGoal
 import com.oliinyk.yaroslav.easyreads.domain.repository.BookRepository
+import com.oliinyk.yaroslav.easyreads.domain.repository.ReadingGoalRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ReadingGoalViewModel @Inject constructor(
-    private val bookRepository: BookRepository
+    private val bookRepository: BookRepository,
+    private val readingGoalRepository: ReadingGoalRepository
 ) : ViewModel() {
 
     private val _stateUi: MutableStateFlow<ReadingGoalUiState> =
@@ -26,6 +29,16 @@ class ReadingGoalViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            val currentYear: Int = Date().year + 1900
+            readingGoalRepository.getByYear(currentYear).collectLatest { readingGoal ->
+                if (readingGoal != null) {
+                    _stateUi.update { it.copy(readingGoals = readingGoal.goal) }
+                } else {
+                    readingGoalRepository.insert(ReadingGoal(year = currentYear))
+                }
+            }
+        }
+        viewModelScope.launch {
             bookRepository.getAll().collectLatest { books ->
                 val currentYearFinishedBooks: List<Book> = books.filter {
                     it.isFinished && (it.finishedDate != null) && (it.finishedDate.year == Date().year)
@@ -34,7 +47,6 @@ class ReadingGoalViewModel @Inject constructor(
                     state.copy(
                         books = currentYearFinishedBooks,
                         readBooksCount = currentYearFinishedBooks.size,
-                        readingGoal = 12, //TODO: read from DB
                         readPages = currentYearFinishedBooks
                             .map { it.pageAmount }
                             .reduce { sum, pages -> sum + pages }
@@ -48,6 +60,6 @@ class ReadingGoalViewModel @Inject constructor(
 data class ReadingGoalUiState(
     val books: List<Book> = emptyList(),
     val readBooksCount: Int = 0,
-    val readingGoal: Int = 0,
+    val readingGoals: Int = 0,
     val readPages: Int = 0
 )

@@ -74,11 +74,11 @@ class MyLibraryFragment : Fragment() {
             labelGoalsReadingProgress.text = getString(
                 R.string.reading_goal__label__goal_reading_progress_text,
                 stateUi.currentYearFinishedBooksCount,
-                stateUi.readingGoal
+                stateUi.readingGoals
             )
 
-            progress.progress = if (stateUi.readingGoal > 0) {
-                stateUi.currentYearFinishedBooksCount * 100 / stateUi.readingGoal
+            progress.progress = if (stateUi.readingGoals > 0) {
+                stateUi.currentYearFinishedBooksCount * 100 / stateUi.readingGoals
             } else {
                 0
             }

@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.oliinyk.yaroslav.easyreads.data.local.AppDatabase
 import com.oliinyk.yaroslav.easyreads.data.local.dao.BookDao
 import com.oliinyk.yaroslav.easyreads.data.local.dao.NoteDao
+import com.oliinyk.yaroslav.easyreads.data.local.dao.ReadingGoalDao
 import com.oliinyk.yaroslav.easyreads.data.local.dao.ReadingSessionDao
 import com.oliinyk.yaroslav.easyreads.data.local.migration_1_2
 import com.oliinyk.yaroslav.easyreads.data.local.migration_2_3
@@ -14,6 +15,7 @@ import com.oliinyk.yaroslav.easyreads.data.local.migration_5_6
 import com.oliinyk.yaroslav.easyreads.data.local.migration_6_7
 import com.oliinyk.yaroslav.easyreads.data.local.migration_7_8
 import com.oliinyk.yaroslav.easyreads.data.local.migration_8_9
+import com.oliinyk.yaroslav.easyreads.data.local.migration_9_10
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,6 +43,11 @@ object DatabaseModule {
     }
 
     @Provides
+    fun provideReadingGoalDao(database: AppDatabase): ReadingGoalDao {
+        return database.readingGoalDao()
+    }
+
+    @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room
@@ -57,7 +64,8 @@ object DatabaseModule {
                 migration_5_6,
                 migration_6_7,
                 migration_7_8,
-                migration_8_9
+                migration_8_9,
+                migration_9_10
             )
             .build()
     }

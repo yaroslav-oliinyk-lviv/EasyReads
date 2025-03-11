@@ -12,12 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.oliinyk.yaroslav.easyreads.R
 import com.oliinyk.yaroslav.easyreads.databinding.FragmentReadingGoalBinding
-import com.oliinyk.yaroslav.easyreads.presentation.book.list.BookListAdapter
-import com.oliinyk.yaroslav.easyreads.presentation.book.list.BookListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -53,7 +50,7 @@ class ReadingGoalFragment : Fragment() {
         _binding = FragmentReadingGoalBinding
             .inflate(inflater, container, false)
             .apply {
-                val spanCount = 3
+                val spanCount = 4
                 listSummeryBooks.layoutManager = GridLayoutManager(context, spanCount)
                 _adapter = ReadingGoalBookGridAdapter(
                     holderSize = ReadingGoalGridBookHolder.ReadingGoalGridHolderSize.DEFAULT
@@ -97,10 +94,10 @@ class ReadingGoalFragment : Fragment() {
             labelGoalsReadingProgress.text = getString(
                 R.string.reading_goal__label__goal_reading_progress_text,
                 stateUi.readBooksCount,
-                stateUi.readingGoal
+                stateUi.readingGoals
             )
-            progress.progress = if (stateUi.readingGoal > 0) {
-                stateUi.readBooksCount * 100 / stateUi.readingGoal
+            progress.progress = if (stateUi.readingGoals > 0) {
+                stateUi.readBooksCount * 100 / stateUi.readingGoals
             } else {
                 0
             }

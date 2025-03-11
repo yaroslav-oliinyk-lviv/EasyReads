@@ -10,24 +10,28 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.oliinyk.yaroslav.easyreads.data.local.converter.DateTypeConverter
 import com.oliinyk.yaroslav.easyreads.data.local.dao.BookDao
 import com.oliinyk.yaroslav.easyreads.data.local.dao.NoteDao
+import com.oliinyk.yaroslav.easyreads.data.local.dao.ReadingGoalDao
 import com.oliinyk.yaroslav.easyreads.data.local.dao.ReadingSessionDao
 import com.oliinyk.yaroslav.easyreads.data.local.entety.BookEntity
 import com.oliinyk.yaroslav.easyreads.data.local.entety.NoteEntity
+import com.oliinyk.yaroslav.easyreads.data.local.entety.ReadingGoalEntity
 import com.oliinyk.yaroslav.easyreads.data.local.entety.ReadingSessionEntity
 
 @Database(
     entities = [
         BookEntity::class,
         NoteEntity::class,
-        ReadingSessionEntity::class
+        ReadingSessionEntity::class,
+        ReadingGoalEntity::class
     ],
-    version = 9
+    version = 10
 )
 @TypeConverters(DateTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun bookDao(): BookDao
     abstract fun noteDao(): NoteDao
     abstract fun readingSessionDao(): ReadingSessionDao
+    abstract fun readingGoalDao(): ReadingGoalDao
 
     companion object {
         const val DATABASE_NAME = "AppDatabase.db"
@@ -94,5 +98,13 @@ val migration_8_9 = object : Migration(8, 9) {
     override fun migrate(db: SupportSQLiteDatabase) {
         db.execSQL("ALTER TABLE `books` ADD COLUMN `finished_date` INTEGER")
         db.execSQL("ALTER TABLE `books` ADD COLUMN `is_finished` TEXT NOT NULL DEFAULT FALSE")
+    }
+}
+
+val migration_9_10 = object : Migration(9, 10) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `reading_goals` (`year` INTEGER NOT NULL, `goal` INTEGER NOT NULL, PRIMARY KEY(`year`))"
+        )
     }
 }
