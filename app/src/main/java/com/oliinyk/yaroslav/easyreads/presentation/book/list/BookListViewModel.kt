@@ -48,10 +48,8 @@ class BookListViewModel @Inject constructor(
                 if (bookSortingString.isNotEmpty()) {
                     val bookSorting = BookSorting.fromString(bookSortingString)
                     _stateUi.update { it.copy(bookSorting = bookSorting) }
-                    loadBooks()
-                } else {
-                    loadBooks()
                 }
+                loadBooks()
             }
         }
     }

@@ -225,15 +225,7 @@ class BookListFragment : Fragment() {
                 ) {
                     viewModel.updateBookSorting(
                         viewModel.bookSorting.copy(
-                            bookSortingType = BookSortingType
-                                .valueOf(
-                                    parent!!.getItemAtPosition(position)
-                                        .toString()
-                                        .substringAfter(":")
-                                        .trim()
-                                        .uppercase()
-                                        .replace(' ', '_')
-                                )
+                            bookSortingType = BookSortingType.entries[position]
                         )
                     )
                 }
