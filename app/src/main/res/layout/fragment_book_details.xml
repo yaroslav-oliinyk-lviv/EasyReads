@@ -25,7 +25,7 @@
             app:layout_constraintGuide_end="16dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_image"
+            android:id="@+id/container_image_title_author"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -47,38 +47,11 @@
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CornerSize8Percent"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/shelve"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="8dp"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:textSize="16sp"
-                android:background="@drawable/background_list_item"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cover_image"
-                android:text="@string/book_details__label__shelve_want_to_read_text" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/title_and_author_container"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/background_list_item"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
-            app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@+id/container_image">
-
             <TextView
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 android:gravity="center"
@@ -86,7 +59,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cover_image"
                 tools:text="@string/book_details__tools__book_title_text" />
 
             <View
@@ -113,6 +86,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/split_1"
                 tools:text="@string/book_details__tools__book_author_text" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/shelve"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="8dp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textSize="16sp"
+                android:background="@drawable/background_list_item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/author"
+                android:text="@string/book_details__label__shelve_want_to_read_text" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -123,7 +111,7 @@
             android:background="@drawable/background_list_item"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@id/title_and_author_container">
+            app:layout_constraintTop_toBottomOf="@id/container_image_title_author">
 
             <TextView
                 android:id="@+id/book_read_time"

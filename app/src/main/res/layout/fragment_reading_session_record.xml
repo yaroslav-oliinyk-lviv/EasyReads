@@ -24,34 +24,34 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/cover_image"
-            android:layout_width="120dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/background_list_item_book_cover_image"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
-            app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CornerSize8Percent"
-            app:srcCompat="@android:drawable/ic_menu_gallery" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/title_and_author_container"
+            android:id="@+id/container_image_title_author"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/background_list_item"
             app:layout_constraintEnd_toStartOf="@+id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@+id/cover_image">
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/cover_image"
+                android:layout_width="120dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_list_item_book_cover_image"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CornerSize8Percent"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/label_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:maxLines="3"
                 android:paddingHorizontal="8dp"
@@ -60,7 +60,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cover_image"
                 tools:text="@string/book_details__tools__book_title_text" />
 
             <View
@@ -113,7 +113,7 @@
             android:background="@drawable/background_list_item"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@id/title_and_author_container">
+            app:layout_constraintTop_toBottomOf="@id/container_image_title_author">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/label_read_time"
