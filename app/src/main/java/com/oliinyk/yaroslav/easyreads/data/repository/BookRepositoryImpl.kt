@@ -4,6 +4,7 @@ import androidx.sqlite.db.SimpleSQLiteQuery
 import com.oliinyk.yaroslav.easyreads.data.local.dao.BookDao
 import com.oliinyk.yaroslav.easyreads.data.local.entety.toModel
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
+import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType
 import com.oliinyk.yaroslav.easyreads.domain.model.BookSorting
 import com.oliinyk.yaroslav.easyreads.domain.model.BookSortingType
 import com.oliinyk.yaroslav.easyreads.domain.model.toEntity
@@ -20,8 +21,6 @@ import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private const val QUERY_SELECT_ALL_ORDER_BY = "SELECT * FROM books ORDER BY"
-
 @Singleton
 class BookRepositoryImpl @Inject constructor(
     private val bookDao: BookDao
@@ -30,11 +29,32 @@ class BookRepositoryImpl @Inject constructor(
     private val coroutineScope: CoroutineScope = GlobalScope
     private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
 
-    override fun getAllSortedBy(bookSorting: BookSorting): Flow<List<Book>> {
-        val columns = when (bookSorting.bookSortingType) {
+    override fun getAllAndSorted(bookSorting: BookSorting): Flow<List<Book>> {
+        val sortingOrder = getSortingOrder(bookSorting)
+        val query = "SELECT * FROM books ORDER BY $sortingOrder"
+        return bookDao.getAllSortedBy(SimpleSQLiteQuery(query)).map { entities ->
+            entities.map { it.toModel() }
+        }
+    }
+
+    override fun getByShelveAndSorted(
+        bookShelveType: BookShelveType,
+        bookSorting: BookSorting
+    ): Flow<List<Book>> {
+        val sortingOrder = getSortingOrder(bookSorting)
+        val query = "SELECT * FROM books WHERE shelve='$bookShelveType' ORDER BY $sortingOrder"
+        return bookDao.getAllSortedBy(SimpleSQLiteQuery(query)).map { entities ->
+            entities.map { it.toModel() }
+        }
+    }
+
+    private fun getSortingOrder(bookSorting: BookSorting) =
+        when (bookSorting.bookSortingType) {
             BookSortingType.AUTHOR -> {
-                "${BookSortingType.AUTHOR.toString().lowercase()
-                } ${bookSorting.bookSortingOrderType
+                "${
+                    BookSortingType.AUTHOR.toString().lowercase()
+                } ${
+                    bookSorting.bookSortingOrderType
                 }, ${BookSortingType.TITLE.toString().lowercase()} ASC"
             }
             else -> {
@@ -45,11 +65,6 @@ class BookRepositoryImpl @Inject constructor(
                 }"
             }
         }
-        val query = "$QUERY_SELECT_ALL_ORDER_BY $columns"
-        return bookDao.getAllSortedBy(SimpleSQLiteQuery(query)).map { entities ->
-            entities.map { it.toModel() }
-        }
-    }
 
     override fun getAll(): Flow<List<Book>> {
         return bookDao.getAll().map { entities -> entities.map { it.toModel() } }

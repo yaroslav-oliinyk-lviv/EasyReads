@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
 import com.oliinyk.yaroslav.easyreads.R
 import com.oliinyk.yaroslav.easyreads.databinding.FragmentMyLibraryBinding
+import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -112,9 +113,24 @@ class MyLibraryFragment : Fragment() {
             }
 
             //Shelves
+            shelveFinished.setOnClickListener {
+                findNavController().navigate(
+                    MyLibraryFragmentDirections.showBooks(BookShelveType.FINISHED)
+                )
+            }
+            shelveReading.setOnClickListener {
+                findNavController().navigate(
+                    MyLibraryFragmentDirections.showBooks(BookShelveType.READING)
+                )
+            }
+            shelveWantToRead.setOnClickListener {
+                findNavController().navigate(
+                    MyLibraryFragmentDirections.showBooks(BookShelveType.WANT_TO_READ)
+                )
+            }
             shelveSeeAllBooks.setOnClickListener {
                 findNavController().navigate(
-                    MyLibraryFragmentDirections.showAllBooks()
+                    MyLibraryFragmentDirections.showBooks(null)
                 )
             }
         }

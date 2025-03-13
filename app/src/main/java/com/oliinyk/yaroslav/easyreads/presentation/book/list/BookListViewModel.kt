@@ -3,6 +3,7 @@ package com.oliinyk.yaroslav.easyreads.presentation.book.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
+import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType
 import com.oliinyk.yaroslav.easyreads.domain.model.BookSorting
 import com.oliinyk.yaroslav.easyreads.domain.repository.BookRepository
 import com.oliinyk.yaroslav.easyreads.domain.repository.PreferencesRepository
@@ -29,7 +30,10 @@ class BookListViewModel @Inject constructor(
     val bookSorting: BookSorting
         get() = stateUi.value.bookSorting
 
-    private var jobGetAllSortedBy: Job? = null
+    val bookShelveType: BookShelveType?
+        get() = stateUi.value.bookShelveType
+
+    private var jobFetchBooks: Job? = null
 
     init {
         viewModelScope.launch {
@@ -63,17 +67,30 @@ class BookListViewModel @Inject constructor(
             preferencesRepository.setBookSorting(bookSorting.toString())
         }
     }
+
     fun updateHolderSize(holderSize: BookHolder.HolderSize) {
         viewModelScope.launch {
             preferencesRepository.setBookListCellHolderSize(holderSize.toString())
         }
     }
 
+    fun updateBookShelveType(updatedBookShelveType: BookShelveType) {
+        _stateUi.update { it.copy(bookShelveType = updatedBookShelveType) }
+        loadBooks()
+    }
+
     private fun loadBooks() {
-        jobGetAllSortedBy?.cancel()
-        jobGetAllSortedBy = viewModelScope.launch {
-            bookRepository.getAllSortedBy(bookSorting).collect { books ->
-                _stateUi.update { it.copy(books = books) }
+        jobFetchBooks?.cancel()
+        jobFetchBooks = viewModelScope.launch {
+            if (bookShelveType != null) {
+                bookRepository.getByShelveAndSorted(bookShelveType!!, bookSorting).collect { books ->
+                    _stateUi.update { it.copy(books = books) }
+                }
+            }
+            else {
+                bookRepository.getAllAndSorted(bookSorting).collect { books ->
+                    _stateUi.update { it.copy(books = books) }
+                }
             }
         }
     }
@@ -82,5 +99,6 @@ class BookListViewModel @Inject constructor(
 data class StateUiBookList(
     val books: List<Book> = emptyList(),
     val holderSize: BookHolder.HolderSize = BookHolder.HolderSize.DEFAULT,
-    val bookSorting: BookSorting = BookSorting()
+    val bookSorting: BookSorting = BookSorting(),
+    val bookShelveType: BookShelveType? = null
 )

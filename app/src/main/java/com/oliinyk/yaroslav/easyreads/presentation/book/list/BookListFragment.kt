@@ -16,6 +16,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.oliinyk.yaroslav.easyreads.R
@@ -35,6 +36,7 @@ class BookListFragment : Fragment() {
             getString(R.string.msg_error__cannot_access_binding)
         }
 
+    private val args: BookListFragmentArgs by navArgs()
     private val viewModel: BookListViewModel by viewModels()
     private lateinit var _menuProvider: MenuProvider
 
@@ -47,6 +49,10 @@ class BookListFragment : Fragment() {
 
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.slide_in_from_bottom)
+
+        args.bookShelveType?.let { bookShelveType ->
+            viewModel.updateBookShelveType(bookShelveType)
+        }
     }
 
     override fun onCreateView(

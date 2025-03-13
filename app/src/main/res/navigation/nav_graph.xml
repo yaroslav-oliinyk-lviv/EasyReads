@@ -11,7 +11,7 @@
         android:label="MyLibraryFragment"
         tools:layout="@layout/fragment_my_library" >
         <action
-            android:id="@+id/show_all_books"
+            android:id="@+id/show_books"
             app:destination="@id/bookListFragment" />
         <action
             android:id="@+id/show_reading_goal"
@@ -39,6 +39,10 @@
         <action
             android:id="@+id/show_add_book"
             app:destination="@id/bookEditFragment" />
+        <argument
+            android:name="bookShelveType"
+            app:argType="com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType"
+            app:nullable="true" />
     </fragment>
 
     <fragment
