@@ -34,11 +34,8 @@ class BookEditViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            bookRepository.getAll().collectLatest { books ->
-                _stateUi.update { it.copy(
-                    authors = books.map { book -> book.author }
-                        .distinct()
-                ) }
+            bookRepository.getAuthors().collectLatest { authors ->
+                _stateUi.update { it.copy(authors = authors) }
             }
         }
     }

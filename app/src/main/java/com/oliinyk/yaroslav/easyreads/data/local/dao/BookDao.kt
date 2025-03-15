@@ -24,6 +24,9 @@ interface BookDao {
     @Query("SELECT * FROM books WHERE id = (:id)")
     fun getById(id: UUID): Flow<BookEntity?>
 
+    @Query("SELECT DISTINCT author FROM books")
+    fun getAuthors(): Flow<List<String>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(book: BookEntity)
 

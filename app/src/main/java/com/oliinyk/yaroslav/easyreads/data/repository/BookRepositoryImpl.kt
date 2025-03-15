@@ -75,6 +75,10 @@ class BookRepositoryImpl @Inject constructor(
             .distinctUntilChanged()
     }
 
+    override fun getAuthors(): Flow<List<String>> {
+        return bookDao.getAuthors().distinctUntilChanged()
+    }
+
     override fun save(book: Book) {
         coroutineScope.launch(coroutineDispatcher) {
             bookDao.save(book.toEntity())

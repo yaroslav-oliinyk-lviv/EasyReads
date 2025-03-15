@@ -16,6 +16,8 @@ interface BookRepository {
 
     fun getById(id: UUID): Flow<Book?>
 
+    fun getAuthors(): Flow<List<String>>
+
     fun save(book: Book)
 
     fun update(book: Book)
