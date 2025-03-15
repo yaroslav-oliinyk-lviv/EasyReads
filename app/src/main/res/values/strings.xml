@@ -95,6 +95,7 @@
     <string name="note_add_edit_dialog__hint__enter_note_page_text">Enter page</string>
     <string name="note_add_edit_dialog__button__save_text">Save</string>
     <string name="note_add_edit_dialog__button__cancel_text">Cancel</string>
+    <string name="note_add_edit_dialog__error__message_text">Must not be empty</string>
 
     <!-- Confirmation Dialog -->
     <string name="confirmation_dialog__button__ok_text">Ok</string>

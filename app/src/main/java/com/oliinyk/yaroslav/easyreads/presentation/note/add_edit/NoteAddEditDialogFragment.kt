@@ -28,8 +28,8 @@ class NoteAddEditDialogFragment : DialogFragment() {
             requireActivity().layoutInflater
         ).apply {
             noteText.setText(noteOld.text)
-            noteOld.page?.let {
-                notePage.setText(it.toString())
+            noteOld.page?.let { pageNumber ->
+                notePage.setText(pageNumber)
             }
         }
 
@@ -39,6 +39,11 @@ class NoteAddEditDialogFragment : DialogFragment() {
 
         binding.apply {
             noteButtonSave.setOnClickListener {
+
+                if (binding.noteText.text == null || binding.noteText.text.toString().isBlank()) {
+                    binding.noteText.error = getString(R.string.note_add_edit_dialog__error__message_text)
+                    return@setOnClickListener
+                }
 
                 val pageText = binding.notePage.text?.toString()
                 val noteUpdated = if (
