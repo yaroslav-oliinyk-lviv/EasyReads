@@ -252,7 +252,7 @@
     <string name="reading_goal__label__summery_title_text">Reading Summery</string>
     <string name="reading_goal__label__summery_read_pages_text">READ PAGES\n%d</string>
     <string name="reading_goal__label__summery_read_time_text">READ TIME\n%1$02dhrs %2$02dmin</string>
-    <string name="reading_goal__label__summery_read_time_empty_text">READ TIME\n00hrs 00min</string>
+    <string name="reading_goal__label__summery_read_average_pages_hour_text">Av. PAGES/HOUR\n%d</string>
     <string name="reading_goal__label__summery_books_title_text">Books (%d)</string>
 
     <string name="reading_goal__toolbar__title_text">@string/reading_goal__label__goal_title_text</string>

@@ -19,6 +19,7 @@ import com.oliinyk.yaroslav.easyreads.domain.util.AppConstants.MINUTES_IN_ONE_HO
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Date
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class ReadingGoalFragment : Fragment() {
@@ -104,23 +105,28 @@ class ReadingGoalFragment : Fragment() {
             }
 
             //Summery
+            val averagePagesHour = if (stateUi.books.isNotEmpty() && stateUi.totalReadMinutes != 0) {
+                (stateUi.readPages.toDouble() / stateUi.totalReadMinutes * MINUTES_IN_ONE_HOUR).roundToInt()
+            } else {
+                0
+            }
+            labelSummeryReadAveragePagesHour.text = getString(
+                R.string.reading_goal__label__summery_read_average_pages_hour_text,
+                averagePagesHour
+            )
+
+            val readHours = stateUi.totalReadMinutes / MINUTES_IN_ONE_HOUR
+            val readMinutes = stateUi.totalReadMinutes % MINUTES_IN_ONE_HOUR
+            labelSummeryReadTime.text = getString(
+                R.string.reading_goal__label__summery_read_time_text,
+                readHours,
+                readMinutes
+            )
+
             labelSummeryReadPages.text = getString(
                 R.string.reading_goal__label__summery_read_pages_text,
                 stateUi.readPages
             )
-            if (stateUi.books.isNotEmpty()) {
-                val readHours = stateUi.totalReadMinutes / MINUTES_IN_ONE_HOUR
-                val readMinutes = stateUi.totalReadMinutes % MINUTES_IN_ONE_HOUR
-                labelSummeryReadTime.text = getString(
-                    R.string.reading_goal__label__summery_read_time_text,
-                    readHours,
-                    readMinutes
-                )
-            } else {
-                labelSummeryReadTime.text = getString(
-                    R.string.reading_goal__label__summery_read_time_empty_text
-                )
-            }
 
             //Books
             labelSummeryBooksTitle.text = getString(
