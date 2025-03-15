@@ -226,6 +226,14 @@ class BookDetailsFragment : Fragment() {
             progress.progress = percentage
             progressPercentage.text = getString(R.string.book_reading_progress_percentage_text, percentage)
 
+            //Start Reading
+            if (stateUi.book.isFinished) {
+                split5.visibility = View.GONE
+                buttonStartReadingSession.visibility = View.GONE
+                labelStartReadingSession.visibility = View.GONE
+                buttonReadingSessionAdd.visibility = View.GONE
+            }
+
             //Notes
             buttonNotesSeeAll.text = getString(
                 R.string.book_details__button__see_all_notes_text,
