@@ -13,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.activity.result.PickVisualMediaRequest
@@ -229,6 +230,15 @@ class BookEditFragment : Fragment() {
                 if (bookShelves.selectedItemPosition != book.shelve.ordinal) {
                     bookShelves.setSelection(book.shelve.ordinal)
                 }
+            }
+
+            if (author.adapter == null && stateUi.authors.isNotEmpty()) {
+                author.setAdapter(
+                    ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_dropdown_item_1line,
+                        stateUi.authors)
+                )
             }
         }
     }

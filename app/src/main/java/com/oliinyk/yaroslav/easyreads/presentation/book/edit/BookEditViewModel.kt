@@ -3,6 +3,7 @@ package com.oliinyk.yaroslav.easyreads.presentation.book.edit
 import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.oliinyk.yaroslav.easyreads.domain.model.Book
 import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType
 import com.oliinyk.yaroslav.easyreads.domain.repository.BookRepository
@@ -11,7 +12,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -29,6 +32,17 @@ class BookEditViewModel @Inject constructor(
     )
     val stateUi: StateFlow<StateUiBookEdit> = _stateUi.asStateFlow()
 
+    init {
+        viewModelScope.launch {
+            bookRepository.getAll().collectLatest { books ->
+                _stateUi.update { it.copy(
+                    authors = books.map { book -> book.author }
+                        .distinct()
+                ) }
+            }
+        }
+    }
+
     fun updateStateUi(onUpdate: (StateUiBookEdit) -> StateUiBookEdit) {
         _stateUi.update { onUpdate(it) }
     }
@@ -42,10 +56,10 @@ class BookEditViewModel @Inject constructor(
             } else {
                 deleteBookCoverImage(contextApplication, _stateUi.value.pickedImageName)
             }
-            saveBook = if (saveBook.shelve == BookShelveType.FINISHED) {
-                saveBook.copy(isFinished = true, finishedDate = Date())
-            } else {
-                saveBook.copy(isFinished = false, finishedDate = null)
+            if (!saveBook.isFinished && saveBook.shelve == BookShelveType.FINISHED) {
+                saveBook = saveBook.copy(isFinished = true, finishedDate = Date())
+            } else if (saveBook.isFinished && saveBook.shelve != BookShelveType.FINISHED) {
+                saveBook = saveBook.copy(isFinished = false, finishedDate = null)
             }
 
             bookRepository.save(saveBook)
@@ -59,7 +73,7 @@ class BookEditViewModel @Inject constructor(
         _stateUi.update {
             it.copy(
                 pickedImageUri = uri,
-                pickedImageName = "IMG_${_stateUi.value.book?.id ?: UUID.randomUUID()}.JPG"
+                pickedImageName = "IMG_${UUID.randomUUID()}.JPG"
             )
         }
         copyImageToAppFolder(applicationContext)
@@ -103,5 +117,6 @@ data class StateUiBookEdit(
     val pickedImageUri: Uri? = null,
     val pickedImageName: String? = null,
     val tookPhotoName: String? = null,
-    val isNewImageCopied: Boolean = false
+    val isNewImageCopied: Boolean = false,
+    val authors: List<String> = emptyList()
 )
