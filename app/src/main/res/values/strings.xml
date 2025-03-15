@@ -43,8 +43,8 @@
     <string name="book_details__tools__book_title_text">The Final Empire</string>
     <string name="book_details__label__book_pages_text">PAGES\n%1$d/%2$d</string>
     <string name="book_details__tools__book_pages_text">PAGES\n153/647</string>
-    <string name="book_details__label__book_read_time_text">READ TIME\n%1$02d:%2$02d</string>
-    <string name="book_details__tools__book_read_time_text">READ TIME\n01:35</string>
+    <string name="book_details__label__book_read_time_text">READ TIME\n%1$02dhrs %2$02dmin</string>
+    <string name="book_details__tools__book_read_time_text">READ TIME\n01hrs 35min</string>
     <string name="book_details__label__book_read_average_pages_hour_text">Av. PAGES/HOUR\n%d</string>
     <string name="book_details__tools__book_read_average_pages_hour_text">Av. PAGES/HOUR\n18</string>
     <string name="book_details__label__book_read_pages_hour_text">PAGES/HOUR\n%d</string>
@@ -225,7 +225,7 @@
     <string name="reading_session_list__dialog__confirmation_remove_message_text">Reading Session will be removed</string>
     <!-- Reading Session List Item -->
     <string name="reading_session_list_item__label__date_text">%s</string>
-    <string name="reading_session_list_item__label__read_time_text">READ TIME\n%1$02d:%2$02d</string>
+    <string name="reading_session_list_item__label__read_time_text">READ TIME\n%1$02dhrs %2$02dmin</string>
     <string name="reading_session_list_item__label__read_end_page_text">From %1$d To %2$d Page</string>
     <string name="reading_session_list_item__label__read_pages_hour_text">PAGES/HOUR\n%d</string>
     <string name="reading_session_list_item__label__read_pages_text">READ PAGES\n%d</string>
@@ -250,7 +250,9 @@
     <string name="reading_goal__label__goal_reading_progress_text">You have read %d of %d books</string>
     <string name="reading_goal__label__goal_change_text">Change Your Goal</string>
     <string name="reading_goal__label__summery_title_text">Reading Summery</string>
-    <string name="reading_goal__label__summery_read_pages_text">Read Pages: %d</string>
+    <string name="reading_goal__label__summery_read_pages_text">READ PAGES\n%d</string>
+    <string name="reading_goal__label__summery_read_time_text">READ TIME\n%1$02dhrs %2$02dmin</string>
+    <string name="reading_goal__label__summery_read_time_empty_text">READ TIME\n00hrs 00min</string>
     <string name="reading_goal__label__summery_books_title_text">Books (%d)</string>
 
     <string name="reading_goal__toolbar__title_text">@string/reading_goal__label__goal_title_text</string>

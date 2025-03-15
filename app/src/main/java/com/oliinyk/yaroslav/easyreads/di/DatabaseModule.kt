@@ -7,6 +7,7 @@ import com.oliinyk.yaroslav.easyreads.data.local.dao.BookDao
 import com.oliinyk.yaroslav.easyreads.data.local.dao.NoteDao
 import com.oliinyk.yaroslav.easyreads.data.local.dao.ReadingGoalDao
 import com.oliinyk.yaroslav.easyreads.data.local.dao.ReadingSessionDao
+import com.oliinyk.yaroslav.easyreads.data.local.migration_10_11
 import com.oliinyk.yaroslav.easyreads.data.local.migration_1_2
 import com.oliinyk.yaroslav.easyreads.data.local.migration_2_3
 import com.oliinyk.yaroslav.easyreads.data.local.migration_3_4
@@ -65,7 +66,8 @@ object DatabaseModule {
                 migration_6_7,
                 migration_7_8,
                 migration_8_9,
-                migration_9_10
+                migration_9_10,
+                migration_10_11
             )
             .build()
     }

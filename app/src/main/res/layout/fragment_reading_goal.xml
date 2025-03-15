@@ -128,15 +128,30 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:paddingVertical="8dp"
-                android:paddingHorizontal="8dp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_summery_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:lineSpacingMultiplier="1.15"
+                android:textSize="14sp"
+                android:gravity="start"
+                android:text="@string/reading_goal__label__summery_read_pages_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_summery_read_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:paddingVertical="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/label_summery_title"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-                android:textSize="16sp"
-                android:text="@string/reading_goal__label__summery_read_pages_text"/>
+                android:lineSpacingMultiplier="1.15"
+                android:textSize="14sp"
+                android:gravity="end"
+                android:text="@string/reading_goal__label__summery_read_time_text"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

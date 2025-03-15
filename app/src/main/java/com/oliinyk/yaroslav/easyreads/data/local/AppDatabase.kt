@@ -1,8 +1,6 @@
 package com.oliinyk.yaroslav.easyreads.data.local
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
@@ -24,7 +22,7 @@ import com.oliinyk.yaroslav.easyreads.data.local.entety.ReadingSessionEntity
         ReadingSessionEntity::class,
         ReadingGoalEntity::class
     ],
-    version = 10
+    version = 11
 )
 @TypeConverters(DateTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -106,5 +104,12 @@ val migration_9_10 = object : Migration(9, 10) {
         db.execSQL(
             "CREATE TABLE IF NOT EXISTS `reading_goals` (`year` INTEGER NOT NULL, `goal` INTEGER NOT NULL, PRIMARY KEY(`year`))"
         )
+    }
+}
+
+val migration_10_11 = object : Migration(10, 11) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE `books` ADD COLUMN `read_minutes_count` INTEGER NOT NULL DEFAULT 0")
+        db.execSQL("ALTER TABLE `books` ADD COLUMN `read_sessions_count` INTEGER NOT NULL DEFAULT 0")
     }
 }

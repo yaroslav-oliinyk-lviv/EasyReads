@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionInflater
 import com.oliinyk.yaroslav.easyreads.R
 import com.oliinyk.yaroslav.easyreads.databinding.FragmentReadingGoalBinding
+import com.oliinyk.yaroslav.easyreads.domain.util.AppConstants.MINUTES_IN_ONE_HOUR
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -107,6 +108,19 @@ class ReadingGoalFragment : Fragment() {
                 R.string.reading_goal__label__summery_read_pages_text,
                 stateUi.readPages
             )
+            if (stateUi.books.isNotEmpty()) {
+                val readHours = stateUi.totalReadMinutes / MINUTES_IN_ONE_HOUR
+                val readMinutes = stateUi.totalReadMinutes % MINUTES_IN_ONE_HOUR
+                labelSummeryReadTime.text = getString(
+                    R.string.reading_goal__label__summery_read_time_text,
+                    readHours,
+                    readMinutes
+                )
+            } else {
+                labelSummeryReadTime.text = getString(
+                    R.string.reading_goal__label__summery_read_time_empty_text
+                )
+            }
 
             //Books
             labelSummeryBooksTitle.text = getString(
