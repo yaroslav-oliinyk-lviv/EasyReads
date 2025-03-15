@@ -27,12 +27,9 @@ class ReadingSessionViewHolder(
                     readingSession.startedDate
                 ).toString()
             )
-            labelReadStartPage.text = context.getString(
-                R.string.reading_session_list_item__label__read_start_page_text,
-                readingSession.startPage
-            )
-            labelReadEndPage.text = context.getString(
+            labelReadFromToPage.text = context.getString(
                 R.string.reading_session_list_item__label__read_end_page_text,
+                readingSession.startPage,
                 readingSession.endPage
             )
             labelReadTime.text = context.getString(

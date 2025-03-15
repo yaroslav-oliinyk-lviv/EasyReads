@@ -1,6 +1,7 @@
 package com.oliinyk.yaroslav.easyreads.presentation.book.details
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -241,16 +242,24 @@ class BookDetailsFragment : Fragment() {
             )
             if (stateUi.notes.isNotEmpty()) {
                 val note = stateUi.notes.first()
-                noteText.text = note.text
+                labelNoteText.text = note.text
+
+                labelNoteAddedDate.visibility = View.VISIBLE
+                labelNoteAddedDate.text = DateFormat.format(
+                    getString(R.string.date_and_time_format),
+                    note.addedDate
+                ).toString()
+
                 note.page?.let {
-                    notePage.visibility = View.VISIBLE
-                    notePage.text = getString(R.string.note_list_item__label__page_text, it)
+                    labelNotePage.visibility = View.VISIBLE
+                    labelNotePage.text = getString(R.string.note_list_item__label__page_text, it)
                 }
                 buttonNoteEdit.visibility = View.VISIBLE
             } else {
-                notePage.visibility = View.GONE
+                labelNoteAddedDate.visibility = View.GONE
+                labelNotePage.visibility = View.GONE
                 buttonNoteEdit.visibility = View.GONE
-                noteText.text = getString(R.string.note_list__label__no_notes_text)
+                labelNoteText.text = getString(R.string.note_list__label__no_notes_text)
             }
 
             //Reading Sessions
@@ -263,6 +272,8 @@ class BookDetailsFragment : Fragment() {
                 labelReadingSessionReadTime.visibility = View.VISIBLE
                 labelReadingSessionReadPagesHour.visibility = View.VISIBLE
                 labelReadingSessionReadPages.visibility = View.VISIBLE
+                labelReadingSessionReadDate.visibility = View.VISIBLE
+                labelReadingSessionReadFromToPage.visibility = View.VISIBLE
                 buttonReadingSessionEdit.visibility = View.VISIBLE
 
                 val readingSession = stateUi.readingSessions.first()
@@ -279,11 +290,25 @@ class BookDetailsFragment : Fragment() {
                     R.string.reading_session_list_item__label__read_pages_text,
                     readingSession.readPages
                 )
+                labelReadingSessionReadDate.text = getString(
+                    R.string.reading_session_list_item__label__date_text,
+                    DateFormat.format(
+                        getString(R.string.date_and_time_format),
+                        readingSession.startedDate
+                    ).toString()
+                )
+                labelReadingSessionReadFromToPage.text = getString(
+                    R.string.reading_session_list_item__label__read_end_page_text,
+                    readingSession.startPage,
+                    readingSession.endPage
+                )
             } else {
                 labelNoReadingSession.visibility = View.VISIBLE
                 labelReadingSessionReadTime.visibility = View.GONE
                 labelReadingSessionReadPagesHour.visibility = View.GONE
                 labelReadingSessionReadPages.visibility = View.GONE
+                labelReadingSessionReadDate.visibility = View.GONE
+                labelReadingSessionReadFromToPage.visibility = View.GONE
                 buttonReadingSessionEdit.visibility = View.GONE
             }
         }

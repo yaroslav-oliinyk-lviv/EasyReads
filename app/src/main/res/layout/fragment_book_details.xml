@@ -90,7 +90,7 @@
                 android:id="@+id/shelve"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
+                android:paddingVertical="4dp"
                 android:paddingHorizontal="8dp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
@@ -107,7 +107,7 @@
             android:id="@+id/progress_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/background_list_item"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
@@ -186,7 +186,6 @@
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
                 android:background="?android:attr/colorBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -196,7 +195,7 @@
                 android:id="@+id/button_start_reading_session"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/background_button_record"
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -226,7 +225,7 @@
             android:id="@+id/notes_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:paddingVertical="4dp"
             android:background="@drawable/background_list_item"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -234,7 +233,7 @@
             app:layout_constraintTop_toBottomOf="@id/reading_sessions_container">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/note_text"
+                android:id="@+id/label_note_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -250,20 +249,32 @@
                 android:text="@string/book_details__label__no_notes_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/note_page"
+                android:id="@+id/label_note_added_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textSize="12sp"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_note_text"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:text="@string/note_list_item__tools__added_date_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_note_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:paddingHorizontal="8dp"
-                android:paddingBottom="4dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                 android:textSize="12sp"
                 android:maxLines="1"
-                android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/button_note_edit"
-                app:layout_constraintTop_toBottomOf="@id/note_text"
-                tools:text="@string/book_details__label__note_page_text"
-                tools:visibility="visible"/>
+                app:layout_constraintTop_toBottomOf="@id/label_note_text"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:text="@string/note_list_item__label__page_text"/>
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/button_note_edit"
@@ -283,7 +294,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
-                app:constraint_referenced_ids="note_page, button_note_edit"/>
+                app:constraint_referenced_ids="label_note_added_date, label_note_page, button_note_edit"/>
 
             <View
                 android:id="@+id/split_3"
@@ -337,7 +348,7 @@
             android:id="@+id/reading_sessions_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:paddingVertical="4dp"
             android:background="@drawable/background_list_item"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -381,7 +392,6 @@
                     android:maxLines="2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/label_no_reading_session"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:visibility="gone"
                     tools:visibility="visible"
                     android:text="@string/reading_session_list_item__label__read_time_text"
@@ -402,7 +412,6 @@
                     app:layout_constraintStart_toEndOf="@+id/label_reading_session_read_time"
                     app:layout_constraintEnd_toStartOf="@+id/label_reading_session_read_pages"
                     app:layout_constraintTop_toBottomOf="@id/label_no_reading_session"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:visibility="gone"
                     tools:visibility="visible"
                     android:text="@string/book_details__label__book_read_pages_hour_text" />
@@ -412,7 +421,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:paddingHorizontal="8dp"
                     android:paddingTop="8dp"
                     android:paddingBottom="4dp"
                     android:gravity="end"
@@ -422,10 +430,40 @@
                     android:maxLines="2"
                     app:layout_constraintTop_toBottomOf="@id/label_no_reading_session"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:visibility="gone"
                     tools:visibility="visible"
                     android:text="@string/reading_session_list_item__label__read_pages_text" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/label_reading_session_read_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:lineSpacingMultiplier="1.15"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/label_reading_session_read_time"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:text="@string/reading_session_list_item__label__date_text" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/label_reading_session_read_from_to_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="end"
+                    android:lineSpacingMultiplier="1.15"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/label_reading_session_read_time"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="@string/reading_session_list_item__label__read_end_page_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -493,7 +531,9 @@
                 android:src="@drawable/ic_button_record_start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/split_4" />
+                app:layout_constraintTop_toBottomOf="@+id/split_4"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -501,7 +541,7 @@
             android:id="@+id/description_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/background_list_item"
             android:paddingVertical="4dp"

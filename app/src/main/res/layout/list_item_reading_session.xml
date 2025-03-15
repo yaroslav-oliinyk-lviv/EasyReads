@@ -33,31 +33,13 @@
             android:text="@string/reading_session_list_item__label__date_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/label_read_start_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:lineSpacingMultiplier="1.15"
-            android:maxLines="2"
-            android:paddingHorizontal="8dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="4dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/label_read_end_page"
-            app:layout_constraintTop_toBottomOf="@+id/label_read_time"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@string/reading_session_list_item__label__read_start_page_text" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/label_read_end_page"
+            android:id="@+id/label_read_from_to_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:gravity="end"
             android:lineSpacingMultiplier="1.15"
             android:maxLines="2"
-            android:paddingStart="8dp"
             android:paddingTop="8dp"
             android:paddingBottom="4dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
