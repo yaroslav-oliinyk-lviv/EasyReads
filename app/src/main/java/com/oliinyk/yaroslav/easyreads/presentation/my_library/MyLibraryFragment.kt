@@ -3,8 +3,12 @@ package com.oliinyk.yaroslav.easyreads.presentation.my_library
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -14,7 +18,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
 import com.oliinyk.yaroslav.easyreads.R
 import com.oliinyk.yaroslav.easyreads.databinding.FragmentMyLibraryBinding
+import com.oliinyk.yaroslav.easyreads.domain.model.Book
 import com.oliinyk.yaroslav.easyreads.domain.model.BookShelveType
+import com.oliinyk.yaroslav.easyreads.presentation.book.list.BookHolder
+import com.oliinyk.yaroslav.easyreads.presentation.book.list.BookListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -29,9 +36,12 @@ class MyLibraryFragment : Fragment() {
         }
 
     private val viewModel: MyLibraryViewModel by viewModels()
+    private lateinit var _menuProvider: MenuProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        _menuProvider = createMenuProvider()
 
         val inflater = TransitionInflater.from(requireContext())
         exitTransition = inflater.inflateTransition(R.transition.fade)
@@ -134,5 +144,36 @@ class MyLibraryFragment : Fragment() {
                 )
             }
         }
+    }
+
+    private fun createMenuProvider(): MenuProvider {
+        return object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.fragment_my_library, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.menu_add_book -> {
+                        findNavController().navigate(
+                            MyLibraryFragmentDirections.showAddBook(Book())
+                        )
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        requireActivity().addMenuProvider(_menuProvider)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        requireActivity().removeMenuProvider(_menuProvider)
     }
 }

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/show_reading_goal"
             app:destination="@id/readingGoalFragment" />
+        <action
+            android:id="@+id/show_add_book"
+            app:destination="@id/bookEditFragment" />
     </fragment>
 
     <fragment

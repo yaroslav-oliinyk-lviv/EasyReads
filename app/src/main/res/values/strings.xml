@@ -13,6 +13,8 @@
     <string name="book_list__toolbar__title_text">Books (%1$d)</string>
 
     <!-- Menu Items Text -->
+    <string name="menu_item__my_library__add_text">add</string>
+
     <string name="menu_item__book_list__add_text">add</string>
     <string name="menu_item__book_list__image_size_large_text">Size Large</string>
     <string name="menu_item__book_list__image_size_default_text">Size Default</string>
