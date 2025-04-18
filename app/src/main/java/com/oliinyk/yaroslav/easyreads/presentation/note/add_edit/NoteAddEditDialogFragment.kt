@@ -29,7 +29,7 @@ class NoteAddEditDialogFragment : DialogFragment() {
         ).apply {
             noteText.setText(noteOld.text)
             noteOld.page?.let { pageNumber ->
-                notePage.setText(pageNumber)
+                notePage.setText(pageNumber.toString())
             }
         }
 
