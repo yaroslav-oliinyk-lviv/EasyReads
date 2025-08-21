@@ -78,9 +78,12 @@ class ReadingGoalViewModel @Inject constructor(
                     state.copy(
                         books = currentYearFinishedBooks,
                         readBooksCount = currentYearFinishedBooks.size,
-                        readPages = currentYearFinishedBooks
-                            .map { it.pageAmount }
-                            .reduce { sum, pages -> sum + pages }
+                        readPages = if (currentYearFinishedBooks.isNotEmpty()) {
+                            currentYearFinishedBooks.map { it.pageAmount }
+                                .reduce { sum, pages -> sum + pages }
+                        } else {
+                            0
+                        }
                     )
                 }
             }

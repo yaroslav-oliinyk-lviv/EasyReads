@@ -12,6 +12,7 @@ data class Book(
     val title: String = "",
     val author: String = "",
     val description: String = "",
+    val isbn: String = "",
 
     val shelve: BookShelveType = BookShelveType.WANT_TO_READ,
 
@@ -31,6 +32,7 @@ fun Book.toEntity(): BookEntity = BookEntity(
     id = id,
     title = title,
     author = author,
+    isbn = isbn,
     description = description,
     shelve = shelve.toString(),
     pageAmount = pageAmount,

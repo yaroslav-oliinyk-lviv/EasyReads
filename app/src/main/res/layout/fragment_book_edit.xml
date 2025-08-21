@@ -206,7 +206,7 @@
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/barrier_2"
+                app:layout_constraintStart_toEndOf="@+id/barrier_1"
                 app:layout_constraintTop_toBottomOf="@+id/author"
                 android:background="@drawable/background_edit_text"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
@@ -222,7 +222,8 @@
                 android:background="?android:attr/colorBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/page_amount" />
+                app:layout_constraintTop_toBottomOf="@id/page_amount"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/page_current_label"
@@ -261,8 +262,44 @@
                 android:background="?android:attr/colorBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/page_current"
-                android:visibility="gone" />
+                app:layout_constraintTop_toBottomOf="@id/page_current" />
+
+            <TextView
+                android:id="@+id/isbn_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/isbn_input"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/isbn_input"
+                android:text="@string/book_edit__label__book_isbn_text" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/isbn_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_edit_text"
+                android:inputType="number"
+                android:maxLength="13"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/barrier_1"
+                app:layout_constraintTop_toBottomOf="@+id/page_current"
+                android:hint="@string/book_edit__hint__book_isbn_input_text" />
+
+            <View
+                android:id="@+id/split_5"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="7dp"
+                android:background="?android:attr/colorBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/isbn_input" />
 
             <TextView
                 android:id="@+id/description_label"
@@ -271,7 +308,7 @@
                 android:layout_marginTop="16dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/page_current"
+                app:layout_constraintTop_toBottomOf="@+id/isbn_input"
                 android:text="@string/book_edit__label__book_description_text" />
 
             <androidx.appcompat.widget.AppCompatEditText

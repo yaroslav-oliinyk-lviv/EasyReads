@@ -204,6 +204,7 @@ class BookDetailsFragment : Fragment() {
                 stateUi.book.pageCurrent,
                 stateUi.book.pageAmount
             )
+            isbnText.text = stateUi.book.isbn
             descriptionText.text = stateUi.book.description
 
             shelve.text = when(stateUi.book.shelve) {

@@ -538,6 +538,45 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/isbn_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/background_list_item"
+        android:paddingVertical="4dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/notes_container">
+
+        <TextView
+            android:id="@+id/isbn_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/book_details__label__book_isbn_text" />
+
+        <TextView
+            android:id="@+id/isbn_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="8dp"
+            android:paddingVertical="4dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/isbn_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="9789661046848" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/description_container"
             android:layout_width="0dp"
@@ -549,7 +588,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@+id/notes_container">
+            app:layout_constraintTop_toBottomOf="@+id/isbn_container">
 
             <TextView
                 android:id="@+id/description_label"

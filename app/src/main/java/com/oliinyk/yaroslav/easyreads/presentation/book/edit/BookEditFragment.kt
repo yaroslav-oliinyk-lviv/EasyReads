@@ -216,6 +216,9 @@ class BookEditFragment : Fragment() {
                 if (descriptionText.text.toString() != book.description) {
                     descriptionText.setText(book.description)
                 }
+                if (isbnInput.text.toString() != book.isbn) {
+                    isbnInput.setText(book.isbn)
+                }
                 if (stateUi.pickedImageName != null) {
                     updateBookCoverImage(requireContext(), coverImage, stateUi.pickedImageName)
                 } else if (stateUi.tookPhotoName != null) {
@@ -348,6 +351,15 @@ class BookEditFragment : Fragment() {
                     viewModel.updateStateUi { stateUi ->
                         stateUi.copy(
                             book = stateUi.book?.copy(description = text.toString())
+                        )
+                    }
+                }
+            }
+            isbnInput.doOnTextChanged { text, _, _, _ ->
+                text?.let {
+                    viewModel.updateStateUi { stateUi ->
+                        stateUi.copy(
+                            book = stateUi.book?.copy(isbn = text.toString())
                         )
                     }
                 }

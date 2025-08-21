@@ -17,6 +17,9 @@ data class BookEntity(
     val author: String,
     val description: String,
 
+    @ColumnInfo(name = "isbn", defaultValue = "")
+    val isbn: String = "",
+
     @ColumnInfo(defaultValue = "WANT_TO_READ")
     val shelve: String,
 
@@ -48,6 +51,7 @@ fun BookEntity.toModel(): Book = Book (
     id = id,
     title = title,
     author = author,
+    isbn = isbn,
     description = description,
     shelve = BookShelveType.valueOf(shelve),
     pageAmount = pageAmount,
