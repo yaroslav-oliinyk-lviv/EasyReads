@@ -29,7 +29,7 @@ class BookRepositoryImpl @Inject constructor(
     private val coroutineScope: CoroutineScope = GlobalScope
     private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
 
-    override fun getAllAndSorted(bookSorting: BookSorting): Flow<List<Book>> {
+    override fun getAllSorted(bookSorting: BookSorting): Flow<List<Book>> {
         val sortingOrder = getSortingOrder(bookSorting)
         val query = "SELECT * FROM books ORDER BY $sortingOrder"
         return bookDao.getAllSortedBy(SimpleSQLiteQuery(query)).map { entities ->
@@ -37,7 +37,7 @@ class BookRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getByShelveAndSorted(
+    override fun getByShelveSorted(
         bookShelveType: BookShelveType,
         bookSorting: BookSorting
     ): Flow<List<Book>> {

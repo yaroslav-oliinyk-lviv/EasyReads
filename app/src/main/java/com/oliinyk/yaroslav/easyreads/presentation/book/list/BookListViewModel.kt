@@ -83,12 +83,12 @@ class BookListViewModel @Inject constructor(
         jobFetchBooks?.cancel()
         jobFetchBooks = viewModelScope.launch {
             if (bookShelveType != null) {
-                bookRepository.getByShelveAndSorted(bookShelveType!!, bookSorting).collect { books ->
+                bookRepository.getByShelveSorted(bookShelveType!!, bookSorting).collect { books ->
                     _stateUi.update { it.copy(books = books) }
                 }
             }
             else {
-                bookRepository.getAllAndSorted(bookSorting).collect { books ->
+                bookRepository.getAllSorted(bookSorting).collect { books ->
                     _stateUi.update { it.copy(books = books) }
                 }
             }

@@ -8,9 +8,9 @@ import java.util.UUID
 
 interface BookRepository {
 
-    fun getAllAndSorted(bookSorting: BookSorting): Flow<List<Book>>
+    fun getAllSorted(bookSorting: BookSorting): Flow<List<Book>>
 
-    fun getByShelveAndSorted(bookShelveType: BookShelveType, bookSorting: BookSorting): Flow<List<Book>>
+    fun getByShelveSorted(bookShelveType: BookShelveType, bookSorting: BookSorting): Flow<List<Book>>
 
     fun getAll(): Flow<List<Book>>
 
