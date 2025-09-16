@@ -1,6 +1,7 @@
 package com.oliinyk.yaroslav.easyreads.data.repository
 
 import com.oliinyk.yaroslav.easyreads.data.local.dao.ReadingSessionDao
+import com.oliinyk.yaroslav.easyreads.data.local.entety.ReadingSessionEntity
 import com.oliinyk.yaroslav.easyreads.data.local.entety.toModel
 import com.oliinyk.yaroslav.easyreads.domain.model.ReadingSession
 import com.oliinyk.yaroslav.easyreads.domain.model.toEntity
@@ -30,6 +31,12 @@ class ReadingSessionRepositoryImpl @Inject constructor(
             entities.map {
                 it.toModel()
             }
+        }
+    }
+
+    override suspend fun getAllByBookIds(bookIds: List<UUID>): List<ReadingSession> {
+        return readingSessionDao.getAllByBookIds(bookIds).map {
+            it.toModel()
         }
     }
 

@@ -15,6 +15,9 @@ interface ReadingSessionDao {
     @Query("SELECT * FROM reading_sessions WHERE book_id = :bookId ORDER BY started_date DESC")
     fun getAllByBookId(bookId: UUID): Flow<List<ReadingSessionEntity>>
 
+    @Query("SELECT * FROM reading_sessions WHERE book_id IN (:bookIds) ORDER BY started_date DESC")
+    suspend fun getAllByBookIds(bookIds: List<UUID>): List<ReadingSessionEntity>
+
     @Query("SELECT * FROM reading_sessions" +
             " WHERE book_id = :bookId AND record_status <> 'FINISHED'" +
             " ORDER BY started_date DESC" +
